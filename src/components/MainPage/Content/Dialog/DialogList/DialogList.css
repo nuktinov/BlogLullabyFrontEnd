@@ -1,0 +1,49 @@
+.dialogList {
+    overflow: auto;
+    height: 100%;
+    margin-top: 2%;
+}
+
+.dialogList > a{
+    width: 80vh;
+}
+
+.dialogList > a:hower {
+    width: 80vh;
+}
+
+.dialogList > ul > li {
+    border: solid black 1px;
+    margin: 2px 0px;
+    border-radius: 10px;
+
+}
+
+.dialogList > ul {
+    margin: 1px;
+}
+
+.dialogPreview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialogPreview  h5 {
+    width: 95%;
+    margin: 2px;
+    border-radius: 10px;
+    margin-bottom: 7px;
+}
+
+.dialogPreview > a {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/*.dialogPreview > {
+    width: 95%;
+    margin: 2px;
+    border-bottom: 2px solid black;
+}*/

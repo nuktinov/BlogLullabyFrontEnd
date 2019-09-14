@@ -1,0 +1,8 @@
+.postCreating {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainImage  img {
+    width: 50%;
+}

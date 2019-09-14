@@ -1,0 +1,39 @@
+.message {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message > div{
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    margin: 1% 0;
+
+}
+
+.dialogMessage {
+    align-items: flex-start;
+}
+
+.dialogMessageRevers {
+    align-items: flex-end;
+    align-self: flex-end;
+    margin: 10%;
+}
+
+.message  time {
+    flex-basis: auto;
+    color: gray;
+    margin: 0.5vh 2vh;
+}
+
+.message  p {
+    text-align: start;
+    margin: 3px 7px;
+    background: rgb(179, 151, 229);
+    padding: 1vh;
+    max-width: 100%;
+    border-radius: 10px;
+}

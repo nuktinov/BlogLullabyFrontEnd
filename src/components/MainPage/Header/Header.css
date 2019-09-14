@@ -1,0 +1,18 @@
+#pageHeader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: DarkOrchid;
+}
+
+#pageHeader > h1 {
+    margin: 5px;
+    font-family: "Monotype Corsiva", Cursive;
+    color: ivory;
+
+}
+
+header {
+    padding: none;
+    padding-left: 5%; 
+}

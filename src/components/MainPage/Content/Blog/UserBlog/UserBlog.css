@@ -1,0 +1,14 @@
+/*.userBlogLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}*/
+
+.userBlogLinks {
+    margin: 2%;
+}
+
+.userBlogLinks> a {
+    margin: 2%;
+}

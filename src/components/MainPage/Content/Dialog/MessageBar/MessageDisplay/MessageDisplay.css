@@ -1,0 +1,17 @@
+.MessageDisplay {
+
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+}
+
+.MessageDisplay > ul > li {
+    display: flex;
+    align-self: flex-start;
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.MessageDisplay > ul {
+    margin: 2%;
+}

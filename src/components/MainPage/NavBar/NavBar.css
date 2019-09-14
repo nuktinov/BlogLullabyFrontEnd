@@ -1,0 +1,46 @@
+#navBar a { 
+    width: 100%;
+    font-size: 3.5vh;
+    font-family: "Century Gothic";
+    color: DarkOrchid;
+    padding-left: 8%;
+}
+
+#navBar a:hover { 
+    color:white;
+    background:  DarkOrchid;
+    opacity: 1;
+}
+
+#navBar > ul {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#navBar li {
+    display: flex;
+    margin: 10vh 0px;
+    width: 100%;
+}
+
+
+@media all and (max-width: 800px) {
+    #navBar > ul { 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 5px;
+        width: 100%;
+    }
+
+    #navBar > ul > li{ 
+        margin: 1vh 0;
+    }
+
+    #navBar a {
+        width: 80%;
+        padding-bottom: 3%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,110 @@
+#mainPage {
+    display: grid;
+    grid-template-areas:
+    "header header header"
+    "nav pageContent ads"
+    "footer footer footer";
+    grid-template-rows: 8% 1fr 15%;
+    grid-template-columns: 18% 65% 17%;
+    grid-gap: 0%;
+    height: 100vh;
+    background:#f0ddee	;
+    border: none;
+    padding: 0px;
+}
+
+#pageHeader {
+    height: 8%;
+    text-align: center;
+    margin: 0px 0px;
+    position: fixed; 
+    left: 0; top: 0; right: 0;
+    z-index: 1;
+}
+#pageFooter {
+    grid-area: footer;
+    padding: 0px;
+    background: Ivory;
+    text-align: center;
+    border-top: solid black 1px;
+}
+#pageContent {
+    grid-area: pageContent;
+    padding: 0px;
+    background:Ivory;
+    text-align: center;
+    margin: 0px;
+}
+#navBar {
+    position: fixed; 
+    left: 0; top: 8%; 
+    width: 18%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#siteAds {
+    grid-area: ads;
+    padding: 20px;
+    text-align: center;
+    border: solid black 0px;
+}
+
+@media all and (max-width: 800px) {
+    #mainPage {
+    grid-template-areas:
+    "header"
+    "nav"
+    "pageContent"
+    "ads"
+    "footer";
+    grid-template-rows: 8% 6% 1fr 100px 15%;
+    grid-template-columns: 100%;
+    grid-gap: 1%;
+    }
+
+    #navBar {
+        left: 0; top: 8.5%; right: 0px;
+        height: 6.5%;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        background:#f0ddee
+    }
+}
+
+
+body {
+    background:#f0ddee
+}
+
+/*general*/
+
+a {
+    text-decoration: none;
+    width: 100%;
+    font-size: 3.5vh;
+    font-family: "Century Gothic";
+    color: DarkOrchid;
+}
+
+a:hover { 
+    color:white;
+    background:  DarkOrchid;
+    opacity: 1;
+}
+
+
+ul {
+    list-style: none;
+    padding: 0px;
+}
+
+select {
+    color: DarkOrchid;
+    font-size: 2.5vh;
+    margin: 0 1vh;
+}

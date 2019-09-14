@@ -1,0 +1,19 @@
+.filterPanel {
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+    color: DarkOrchid;
+}
+
+.filterPanel label {
+    flex-direction: row;
+    margin: 1px;
+}
+
+.filterPanel form {
+    display: flex;
+    margin: 0 4px;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5vh;
+}

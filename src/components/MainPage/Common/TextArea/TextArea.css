@@ -1,0 +1,23 @@
+#text_area
+{
+    width: 50vw;
+    height: 30px;
+    overflow: hidden;
+    padding: 5px;
+    border: 1px solid #000000;
+    font-family: Arial;
+    font-size: 2vh;
+    color: #000000;
+    resize: none;
+}
+#text_area_div
+{
+    width: 50vw;
+    font-family: Arial;
+    font-size: 2vh;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}

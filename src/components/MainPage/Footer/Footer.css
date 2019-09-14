@@ -1,0 +1,32 @@
+#pageFooter {
+    display: flex;
+    flex-direction: column;
+    background: ivory;
+}
+
+.contact {
+    display: flex;
+    max-height: 30%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+
+.contact > img {
+    display: flex;
+    min-width: 5px;
+    min-height: 5px;
+    /*max-width: 60px;*/
+    height: 80%;
+    padding: 3px;
+}
+
+.contact > p {
+    margin: 0px;
+}
+
+#pageFooter > p {
+    margin: 3px;
+    max-height: 20%;
+}

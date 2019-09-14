@@ -1,0 +1,42 @@
+.postPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.postPageControlPanel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.postPageControlPanel a {
+    margin: 2%;
+    width: 12%;
+    height: 4vh;
+    color: DarkOrchid;
+    font-size: 2.5vh;
+    padding-top: 1%;
+}
+
+/*.updatingLink {
+    position: absolute;
+    color: DarkOrchid;
+    font-size: 2.5vh;
+}*/
+
+.postPageControlPanel a:hover {
+    margin: 2%;
+    width: 12%;
+    height: 4vh;
+    color: Ivory;
+    background: rgb(135, 83, 161);
+    opacity: 1;
+
+}
+
+.postPageTape {
+    width: 70%;
+}

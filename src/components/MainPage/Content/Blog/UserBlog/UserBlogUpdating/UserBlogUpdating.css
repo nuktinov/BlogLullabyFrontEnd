@@ -1,0 +1,15 @@
+.blogUpdating  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.blogUpdating label {
+    flex-direction: row;
+}
+
+.blogUpdating input {
+    /*max-width: 30%;*/
+    margin:1px;
+}

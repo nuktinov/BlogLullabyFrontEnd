@@ -1,0 +1,54 @@
+.postPreview {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 5%;
+}
+
+.postPreviewData {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.postPreview p, time {
+    margin: 3px 5px;
+}
+
+
+.preview {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.preview > div {
+    width: 100%;
+    height: 100%;
+    font-size: 150%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview:hover > div{
+    background-color: rgba(0, 0, 0, 0.9)
+}
+
+.preview:hover > div > span{
+    background: none;
+}
+.preview span{
+    color: aliceblue;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 2%;
+    max-width: 70%;
+    max-height: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.postPreview a:hover {
+    opacity: 1;
+}
