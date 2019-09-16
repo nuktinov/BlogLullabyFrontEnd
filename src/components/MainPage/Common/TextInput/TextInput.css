@@ -1,0 +1,10 @@
+label.textInput {
+    font-size: 3.5vh;
+    font-family: "Century Gothic";
+    color: DarkOrchid;
+}
+
+.textInput input[type=text]{
+    font-size: 3vh;
+    max-width: 25vw;
+}

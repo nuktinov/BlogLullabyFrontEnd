@@ -44,7 +44,6 @@ class UserProfile extends React.Component {
                   <Avatar profile={profile} />
                   <TextInfo profile={profile} />
                 </div>
-                <p>Posts</p>
                 {this.props.authUsername 
                   && !this.props.authUsername.localeCompare(this.props.match.params.username) 
                   && <Link to={`/post/create`}>Add new post</Link>}

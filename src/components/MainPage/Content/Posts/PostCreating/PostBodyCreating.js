@@ -1,7 +1,9 @@
 import React from 'react';
 import TextArea from '../../../Common/TextArea/TextArea'
 import InputFileButton from '../../../Common/InputFileButton/InputFileButton'
+import DeleteButton from '../../../Common/DeleteButton/DeleteButton'
 import './PostBodyCreating.css'
+
 class PostCreate extends React.Component {
     constructor(props) {
       super(props);
@@ -38,17 +40,8 @@ class PostCreate extends React.Component {
     }
 
     deleteButton(position) {
-        return (
-            <div className='deleteContainer'>
-            <button 
-                onClick={()=>this.deleteObject(position)}>
-                delete
-            </button>
-            </div>
-        )
+        return <DeleteButton onClick={()=>this.deleteObject(position)} />
     }
-        
-    
   
     addTextBlock(position) {
         let objects = this.state.objects;

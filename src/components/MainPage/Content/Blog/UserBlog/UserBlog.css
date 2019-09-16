@@ -1,14 +1,12 @@
-/*.userBlogLinks {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}*/
-
 .userBlogLinks {
     margin: 2%;
 }
 
 .userBlogLinks> a {
     margin: 2%;
+    padding: 1vh 3vw;
+}
+
+.userBlogLinks> a:hover {
+    opacity: 0.5;
 }

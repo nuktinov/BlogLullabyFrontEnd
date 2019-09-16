@@ -20,32 +20,30 @@ class Post extends React.Component {
   }
 
   render() {
-      const post = this.props.postState.post;
+    const post = this.props.postState.post;
 
     return (
       <div >   
         {post==null ? null : (
-          <div>
-            <div className="PostDisplay">
-                <h2>{post.title}</h2>
-                <img 
-                    src={post.mainImageUrl}
-                    alt={post.title}
-                />
-                {post.bodyBlocks == null ? null : post.bodyBlocks.map((block, index) => block.blockType=='text' 
-                    ? (<p key={index}> {block.content} </p>)
-                    : (<img key={index} src={block.content} />))
-                }   
-            </div>
+          <div className="PostDisplay">
+            <UserView userView={post.author}/>
+            <h2>{post.title}</h2>
+            <img 
+              src={post.mainImageUrl}
+              alt={post.title}
+            />
+            {post.bodyBlocks == null ? null : post.bodyBlocks.map((block, index) => block.blockType=='text' 
+              ? (<p key={index}> {block.content} </p>)
+              : (<img key={index} src={block.content} />))
+            }  
             <div className='postPreviewData'>
-                    <UserView userView={post.author}/>
-                    <data>
-                        <time>
-                            {dateFormatter(post.date)}
-                        </time>
-                        <p>Visits: {post.visits}</p>
-                    </data>
-            </div>
+              <data>
+                <time>
+                  {dateFormatter(post.date)}
+                </time>
+                <p>Visits: {post.visits}</p>
+              </data>
+            </div> 
           </div>)
         }
       </div>

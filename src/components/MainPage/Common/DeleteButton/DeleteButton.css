@@ -1,0 +1,10 @@
+button.deleteBtn {
+    border: none;
+    width:3vh;
+    height: 3vh;
+    border-radius: 50%;
+}
+
+button.deleteBtn:hover {
+    background: red;
+}

@@ -1,26 +1,16 @@
 .dialogList {
     overflow: auto;
     height: 100%;
-    margin-top: 2%;
-}
-
-.dialogList > a{
-    width: 80vh;
-}
-
-.dialogList > a:hower {
-    width: 80vh;
+    margin-top: 1.5vh;
 }
 
 .dialogList > ul > li {
-    border: solid black 1px;
     margin: 2px 0px;
-    border-radius: 10px;
-
 }
 
 .dialogList > ul {
     margin: 1px;
+    margin-top: 1.5vh;
 }
 
 .dialogPreview {
@@ -28,6 +18,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: solid #dfd1e0;
+    border-width: 1px 0;
+    border-radius: 10px;
 }
 
 .dialogPreview  h5 {
@@ -38,12 +31,18 @@
 }
 
 .dialogPreview > a {
+    color: rgba(61, 17, 83);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+.dialogList > a {
+    color: rgba(61, 17, 83);
+    padding: 0 3vw;
+    border-radius: 10px;
+}
 
-/*.dialogPreview > {
-    width: 95%;
-    margin: 2px;
-    border-bottom: 2px solid black;
-}*/
+.dialogList  a:hover {
+    background: rgb(153, 50, 204, 0.3);
+    color: white;
+    opacity: 1;
+}

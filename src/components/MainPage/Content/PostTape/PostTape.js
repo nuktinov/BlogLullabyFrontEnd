@@ -1,7 +1,7 @@
 import React from 'react';
 import PostPreview from './PostPreview/PostPreview'
-import Loading from '../../Common/Loading'
-import ErrorList from '../../Common/ErrorList'
+import Loading from '../../Common/Loading/Loading'
+import ErrorList from '../../Common/ErrorList/ErrorList'
 import './PostTape.css'
 
 export class PostTape extends React.Component {

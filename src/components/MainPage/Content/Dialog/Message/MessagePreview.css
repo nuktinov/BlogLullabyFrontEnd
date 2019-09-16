@@ -6,24 +6,25 @@
 
 .messagePreviewData {
     display: flex;
-    flex-direction: column;
-    background-color: whitesmoke;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-self: center;
+    background-color: rgb(193, 157, 202, 0.2);
     border-radius: 10px;
     padding-right: 5%;
-    padding: 0 2%;
+    padding: 1.5% 2%;
     width: 70%;
     margin-bottom: 1px;
 }
 .box-text {
     text-overflow: ellipsis; /*образка длинных блоков с текстом*/
     overflow: hidden; /*прятать выходящий за пределы текст*/
-    width: 100%; /*ширина блока с текстом*/
+    width: 1fr; /*ширина блока с текстом*/
     white-space: nowrap; /*запрет на перенос текста*/
     margin: 1px;
     text-align: start;
 }
 .messagePreview  time {
-    width: 100%;
     color: gray;
     margin: 1px 7px;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './InputFileButton.css'
 
-function InputFileButton ({name, onChange}) {
+function InputImageButton ({name, onChange}) {
 
     return (
         <div className="file-upload">
@@ -19,4 +19,4 @@ function InputFileButton ({name, onChange}) {
     )
 };
 
-export default InputFileButton;
+export default InputImageButton;

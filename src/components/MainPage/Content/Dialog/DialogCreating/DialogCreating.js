@@ -2,8 +2,9 @@ import React from 'react';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { dialogCreatingRequest, clearDialogCreating } from '../../../../../store/dialog/dialogCreating'
-import Loading from '../../../Common/Loading'
-import ErrorList from '../../../Common/ErrorList'
+import Loading from '../../../Common/Loading/Loading'
+import ErrorList from '../../../Common/ErrorList/ErrorList'
+import './DialogCreating.css'
 
 class DialogCreating extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class DialogCreating extends React.Component {
   
   label = (value, index) => (
     <label>
-      member {index + 1}:
+      <span>member {index + 1}:</span>
       <input 
         type="text" 
         name={index}
@@ -43,7 +44,7 @@ class DialogCreating extends React.Component {
   
   titleLabel = () => (
     <label>
-      title:
+      <span>title:</span>
       <input 
         type="text" 
         value={this.state.title}
@@ -71,7 +72,6 @@ class DialogCreating extends React.Component {
     event.preventDefault();
     let members = this.state.members;
     members.pop();
-    //console.log({...this.state, members})
     this.props.createDialog({...this.state, members});
   }
 
@@ -84,7 +84,7 @@ class DialogCreating extends React.Component {
           onSubmit={this.textSubmit}>
           {this.titleLabel()}
 			    {this.state.members.map((item,index) => this.label(item, index)) }
-          <input type="submit" value="Create" />
+          <input type="submit" value="Create" id="CreatingBtn"/>
         </form>
         <Loading loading={this.props.loading} />
         <ErrorList errorList={this.props.errorList} />

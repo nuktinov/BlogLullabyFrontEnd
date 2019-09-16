@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route} from 'react-router-dom'
 
 import DialogList from './DialogList/DialogList'
-import DialogCreating from './DialogList/DialogCreating'
+import DialogCreating from './DialogCreating/DialogCreating'
 import MessageBar from './MessageBar/MessageBar'
 import("./Dialog.css")
 

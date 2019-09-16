@@ -1,16 +1,14 @@
 export default function dateFormatter(dates) {
     const nowDate = dateObject(new Date());
     const formattedDate = dateObject(new Date(dates));
-    let result = '';
+    let result = formattedDate.time + ' ';
     if(formattedDate.day != nowDate.day 
         || formattedDate.month != nowDate.month 
         || formattedDate.year != nowDate.year) {
         result += `${formattedDate.day}.${formattedDate.month}`;
         if(formattedDate.year != nowDate.year)
             result += `.${formattedDate.year}`;
-        result += ' ';
     }
-    result += formattedDate.time;
     return result;   
 }
 
