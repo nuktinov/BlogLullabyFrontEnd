@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorListTypeChecking from '../logicElements/errorListTypeChecking'
 const SAVE_AUTHENTICATED_USER = 'SAVE_AUTHENTICATED_USER'
 const AUTHENTICATION_LOADING = 'AUTHENTICATION_LOADING'
 const SET_AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR'
@@ -94,7 +95,7 @@ export function userLoginRequest(user) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setAuthenticationError(error.response.data));
           else
             dispatch(setAuthenticationError([error.response.statusText]));
@@ -121,8 +122,7 @@ export function userRegistrationRequest(user) {
       })
       .catch(error => {
         if (error.response) {
-                    console.log(error.response.data)
-          if(error.response.data != '' && error.response.data)
+          if(errorListTypeChecking(error.response.data))
             dispatch(setAuthenticationError(error.response.data));
           else
             dispatch(setAuthenticationError([error.response.statusText]));
@@ -160,16 +160,3 @@ export function logOut() {
     axios.defaults.headers.common['Authorization'] = null;
   }
 }
-
-/*
-export function rememberRegistrationData(name, pass) {
-    localStorage.setItem('name', name)
-    localStorage.setItem('pass', pass)
-}
-
-export function forgetRegistrationData() {
-  return function(dispatch) {
-    localStorage.removeItem('name')
-    localStorage.removeItem('pass')
-  }
-}*/

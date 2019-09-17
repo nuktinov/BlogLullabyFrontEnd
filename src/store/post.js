@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorListTypeChecking from '../logicElements/errorListTypeChecking'
 const SET_POST_SUCCESS = 'SET_POST_SUCCESS'
 const SET_POST = 'SET_POST'
 const CLEAR_POST = 'CLEAR_POST'
@@ -92,7 +93,7 @@ export function getPostRequest(id) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setPostError(error.response.data));
           else
             dispatch(setPostError([error.response.statusText]));
@@ -118,7 +119,7 @@ export function deletePostRequest(id) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setPostError(error.response.data));
           else
             dispatch(setPostError([error.response.statusText]));
@@ -150,7 +151,7 @@ export function createPostRequest(post) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setPostError(error.response.data));
           else
             dispatch(setPostError([error.response.statusText]));

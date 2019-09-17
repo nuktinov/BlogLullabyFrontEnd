@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorListTypeChecking from '../logicElements/errorListTypeChecking'
 const UPDATE_POSTLIST = 'GET_POSTSLIST'
 const CLEAR_POSTLIST = 'CLEAR_POSTSLIST'
 const POSTLIST_LOADING = 'POSTSLIST_LOADING'
@@ -93,7 +94,7 @@ export function postListRequest(criterion) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setPostListError(error.response.data));
           else
             dispatch(setPostListError([error.response.statusText]));

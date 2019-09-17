@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorListTypeChecking from '../../logicElements/errorListTypeChecking'
 const CLEAR_DIALOG_CREATING = 'CLEAR_DIALOG_CREATING'
 const DIALOG_CREATING_LOADING = 'DIALOG_CREATING_LOADING'
 const SET_DIALOG_CREATING_ERROR = 'SET_DIALOG_CREATING_ERROR'
@@ -68,8 +69,7 @@ export function dialogCreatingRequest(payload) {
       })
       .catch(error => {
         if (error.response) {
-          console.log(error.response);
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setDialogCreatingError(error.response.data));
           else
             dispatch(setDialogCreatingError([error.response.statusText]));

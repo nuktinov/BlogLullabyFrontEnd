@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorListTypeChecking from '../../logicElements/errorListTypeChecking'
 const UPDATE_DIALOG = 'GET_DIALOG'
 const CLEAR_DIALOG = 'CLEAR_DIALOG'
 const DIALOG_LOADING = 'DIALOG_LOADING'
@@ -94,8 +95,7 @@ export function sendMessageRequest(payload) {
       })
       .catch(error => {
         if (error.response) {
-          console.log(error.response);
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setDialogError(error.response.data));
           else
             dispatch(setDialogError([error.response.statusText]));
@@ -117,13 +117,12 @@ export function getDialogRequest(id) {
     axios
       .get(`/communicating/${id}`)
       .then(response => {
-        //console.log(response.data)
         dispatch(setDialog(response.data))
       })
       .catch(error => {
         if (error.response) {
           console.log(error.response);
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setDialogError(error.response.data));
           else
             dispatch(setDialogError([error.response.statusText]));
