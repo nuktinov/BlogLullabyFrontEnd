@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from 'react-router-dom'
-import UserView from '../../UserView/UserView'
+import UserView from '../UserView/UserView'
 import './PostPreview.css'
-import dateFormatter from '../../../../../logicElements/dateFormatter'
+import dateFormatter from '../../../../logicElements/dateFormatter'
 
 class PostPreview extends React.Component {
     constructor(props) {

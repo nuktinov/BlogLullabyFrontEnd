@@ -5,9 +5,6 @@ import ErrorList from '../../Common/ErrorList/ErrorList'
 export class ScrollList extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
-        pageNumber: 0
-      };
     }
 
     componentDidMount() {
@@ -17,10 +14,10 @@ export class ScrollList extends React.Component {
     scrolling() {
         const element = document.documentElement;
         if(element != null) {
-            if( element.scrollTop + element.clientHeight > element.scrollHeight - (0.1 * element.clientHeight)) {
-                if(!this.props.loading 
-                    && !this.props.errorList
-                    && !this.props.isAll) {
+            if( element.scrollTop + element.clientHeight > element.scrollHeight - (0.2 * element.clientHeight)) {
+                if(!this.props.list.isLoading 
+                    && !this.props.list.errors
+                    && !this.props.list.isAll) {
                 this.props.updatePageNumber(this.props.pageNumber + 1) 
                 }
             }
@@ -40,18 +37,18 @@ export class ScrollList extends React.Component {
     }
   
     render() {
-        const loading = this.props.loading
-        const errorList = this.props.errorList
+        const list = this.props.list
         return (
             <div className="scrollList">
                 <ul> 
-                    {this.props.elements.map((element) => 
+                    {list.elements.map((element) => 
                         <li key={element.id.toString()}>
-                            {this.props.listElement(element)}
-                        </li>)}
+                            {this.props.elementView(element)}
+                        </li>)
+                    }
                 </ul>
-                {loading && <Loading loading={loading}/>}
-                {errorList && <ErrorList errorList={errorList}/>}    
+                <Loading loading={list.isLoading}/>
+                <ErrorList errorList={list.errors}/>    
             </div>
         )
     }

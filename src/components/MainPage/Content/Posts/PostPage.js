@@ -3,9 +3,8 @@ import { postListRequest, clearPostList } from '../../../../store/postList'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import FilterPanel from './FilterPanel/FilterPanel'
-import PostTape from '../PostTape/PostTape'
-import ScrollList from '../ScrollList/ScrollList'
-import PostPreview from '../PostTape/PostPreview/PostPreview'
+import ScrollList from '../../Common/ScrollList/ScrollList'
+import PostPreview from '../../Common/PostPreview/PostPreview'
 import './PostPage.css'
 
 class PostPage extends React.Component {
@@ -43,7 +42,7 @@ class PostPage extends React.Component {
     this.props.updatePostList({...this.state, pageNumber })
   }
 
-  listElement(post) {
+  elementView(post) {
     return <PostPreview post={post}/>
   }
 
@@ -61,13 +60,10 @@ class PostPage extends React.Component {
         <div className='postPageTape'>
 
         <ScrollList 
-          errorList={this.props.postList.errorList}
-          loading={this.props.postList.loading}
-          isAll={this.props.postList.isAll}
+          list={this.props.postList}
           pageNumber={this.state.pageNumber}
           updatePageNumber={(page) => this.updatePaging(page)}
-          listElement={this.listElement}
-          elements={this.props.postList.postPreviews}
+          elementView={this.elementView}
         />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { userListRequest, clearUserList } from '../../../../../store/userList'
-import ScrollList from '../../ScrollList/ScrollList'
+import ScrollList from '../../../Common/ScrollList/ScrollList'
 import UserBlogPreview from './UserBlogPreview/UserBlogPreview'
 import TextInput from '../../../Common/TextInput/TextInput'
 
@@ -37,7 +37,7 @@ class BlogList extends React.Component {
         this.props.getUserList({ ...this.state, pageNumber});
     }
     
-    listElement(profile) {
+    elementView(profile) {
         return <UserBlogPreview profile={profile}/>
     }
 
@@ -51,13 +51,10 @@ class BlogList extends React.Component {
                    onChange={(e) => this.updateCriterion(e.target.value)}
                 />
                 <ScrollList 
-                    errorList={userList.errorList}
-                    loading={userList.loading}
-                    isAll={userList.isAll}
+                    list={this.props.userList}
                     pageNumber={this.state.pageNumber}
                     updatePageNumber={(page) => this.updatePageNumber(page)}
-                    listElement={this.listElement}
-                    elements={userList.users}
+                    elementView={this.elementView}
                 />
 			</div>
 		)

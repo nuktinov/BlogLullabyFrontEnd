@@ -51,18 +51,18 @@ export function isAllUsers() {
 // reducer
 
 const initialState = {
-  loading: false,
-  errorList: null,
-  users: [],
-  isAll: false
+  isLoading: false,
+  isAll: false,
+  errors: null,
+  elements: []
 }
 
 export default  function userList(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USERLIST:
-      return { ...state, users: action.payload }
+      return { ...state, elements: action.payload }
     case USERLIST_LOADING:
-      return { ...state, loading: !state.loading }
+      return { ...state, isLoading: !state.isLoading }
     case SET_USERLIST_ERROR:
       return { ...state, errorList: action.payload }
     case DELETE_USERLIST_ERROR:
@@ -84,14 +84,13 @@ export function userListRequest(criterion) {
     axios
       .post(`/userlist`,criterion)
       .then(response => {
-        console.log(response.data)
-        let mass = response.data;
-        if(mass.length < criterion.pageSize)
+        let items = response.data;
+        if(items.length < criterion.pageSize)
           dispatch(isAllUsers())
-        for(let i = 0; i < mass.length; i++)
-          mass[i] = { ...mass[i], id: mass[i].username}
-        if(mass.length != 0) {
-          const newList = getState().userList.users.concat(mass)
+        for(let i = 0; i < items.length; i++)
+          items[i] = { ...items[i], id: items[i].username}
+        if(items.length != 0) {
+          const newList = getState().userList.elements.concat(items)
           dispatch(setUserList(newList))
         }
       })
