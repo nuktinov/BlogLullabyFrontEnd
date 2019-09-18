@@ -1,0 +1,8 @@
+.userBlogPreview {
+    display: flex;
+    flex-direction: row;
+}
+
+.userBlogPreview span {
+    margin: auto;
+}
