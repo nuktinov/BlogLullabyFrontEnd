@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { userListRequest, clearUserList } from '../../../../../store/userList'
 import ScrollList from '../../ScrollList/ScrollList'
-import UserView from '../../UserView/UserView'
+import UserBlogPreview from './UserBlogPreview/UserBlogPreview'
 import TextInput from '../../../Common/TextInput/TextInput'
 
 class BlogList extends React.Component {
@@ -38,7 +38,7 @@ class BlogList extends React.Component {
     }
     
     listElement(profile) {
-        return <UserView userView={profile}/>
+        return <UserBlogPreview profile={profile}/>
     }
 
     render() {
