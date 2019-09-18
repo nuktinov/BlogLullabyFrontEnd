@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import checkOnline from '../../../../../../logicElements/checkOnline'
-import { dateFormatter2 } from '../../../../../../logicElements/dateFormatter'
 
 export default function usernameUpdating({ submit, username }) {
+  const [name, setName] = useState(username)
 
-    const [name, setName] = useState(username)
-
-    
     label = (viewString, inputName, type = "text") => (
         <label>
           {viewString}:

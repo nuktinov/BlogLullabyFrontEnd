@@ -1,6 +1,6 @@
 import React from 'react';
 import dateFormatter from '../../../../../logicElements/dateFormatter'
-import UserView from '../../UserView/UserView'
+import UserView from '../../../Common/UserView/UserView'
 import { getPostRequest, clearPost } from '../../../../../store/post'
 import { connect } from 'react-redux'
 import './PostDisplay.css'
