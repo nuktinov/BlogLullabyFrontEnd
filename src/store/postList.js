@@ -54,7 +54,7 @@ const initialState = {
   loading: false,
   errorList: null,
   postPreviews: [],
-  isAllPosts: false
+  isAll: false
 }
 
 export default  function postList(state = initialState, action) {
@@ -68,7 +68,7 @@ export default  function postList(state = initialState, action) {
     case DELETE_POSTLIST_ERROR:
       return { ...state, errorList: null }
     case IS_ALL_POSTS:
-        return { ...state, isAllPosts: true }
+        return { ...state, isAll: true }
     case CLEAR_POSTLIST:
       return initialState
     default:
