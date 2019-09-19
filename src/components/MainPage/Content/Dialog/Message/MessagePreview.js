@@ -4,7 +4,7 @@ import dateFormatter from '../../../../../logicElements/dateFormatter'
 import './Message.css'
 import './MessagePreview.css'
 
-
+//var a;
 
 function MessagePreview({ message }) {
 	if(message)
@@ -23,3 +23,4 @@ function MessagePreview({ message }) {
 }
 
 export default MessagePreview;
+
