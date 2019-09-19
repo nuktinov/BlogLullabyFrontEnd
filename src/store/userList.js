@@ -64,7 +64,7 @@ export default  function userList(state = initialState, action) {
     case USERLIST_LOADING:
       return { ...state, isLoading: !state.isLoading }
     case SET_USERLIST_ERROR:
-      return { ...state, errorList: action.payload }
+      return { ...state, errors: action.payload }
     case DELETE_USERLIST_ERROR:
       return { ...state, errorList: null }
     case IS_ALL_USERS:
@@ -101,7 +101,7 @@ export function userListRequest(criterion) {
           else
             dispatch(setUserListError([error.response.statusText]));
         } else if (error.request) {
-          console.log(error.request);
+          dispatch(setUserListError(["Error with request"]));
         } else {
           console.log('Error ', error.message);
         }
