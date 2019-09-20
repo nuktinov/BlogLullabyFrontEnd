@@ -1,0 +1,29 @@
+.userBlogPreview {
+    display: flex;
+    font-size: 3vh;
+    width: 90%;
+    border-bottom: 1px  solid rgb(135, 83, 161);
+    margin: auto;
+}
+.textInfo {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 4% 1%;
+    align-items: flex-start;
+}
+
+.textInfo > span{
+    margin: 1vh 2vw;
+}
+
+.textInfo > :first-child{
+    margin: 2.5vh 2vw;
+    margin-top: 0;
+    font-weight: 800;
+    font-size: 4vh;
+}
+
+.textInfo > :last-child{
+    align-self: flex-end;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { userListRequest, clearUserList } from '../../../../../store/userList'
 import ScrollList from '../../../Common/ScrollList/ScrollList'
-import UserBlogPreview from './UserBlogPreview/UserBlogPreview'
+import UserBlogPreview from '../UserBlogPreview/UserBlogPreview'
 import TextInput from '../../../Common/TextInput/TextInput'
 
 class BlogList extends React.Component {
@@ -42,7 +42,6 @@ class BlogList extends React.Component {
     }
 
     render() {
-        const userList = this.props.userList;
         return (
 			<div className='userList'>
                 <TextInput

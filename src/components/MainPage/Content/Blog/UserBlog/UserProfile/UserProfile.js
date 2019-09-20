@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import { getUserProfileRequest, deleteUserProfileError } from '../../../../../../store/userProfile'
 import { postListRequest, clearPostList } from '../../../../../../store/postList'
-import Avatar from '../../../../Common/Avatar/Avatar'
 import PostPreview from '../../../../Common/PostPreview/PostPreview'
 import ScrollList from '../../../../Common/ScrollList/ScrollList'
-import TextInfo from './TextInfo'
+import UserBlogPreview from '../../UserBlogPreview/UserBlogPreview'
 import './UserProfile.css'
 class UserProfile extends React.Component {
     constructor(props) {
@@ -44,10 +43,7 @@ class UserProfile extends React.Component {
       const profile = this.props.profile;
         return (
             <div className="userProfile">
-                <div className='basicBlock'>
-                  <Avatar profile={profile} />
-                  <TextInfo profile={profile} />
-                </div>
+                <UserBlogPreview profile={profile} />
                 {this.props.authUsername 
                   && !this.props.authUsername.localeCompare(this.props.match.params.username) 
                   && <Link to={`/post/create`}>Add new post</Link>}
@@ -56,8 +52,7 @@ class UserProfile extends React.Component {
                   pageNumber={this.state.pageNumber}
                   updatePageNumber={(page) => this.updatePaging(page)}
                   elementView={this.elementView}
-                />
-                
+                />        
             </div>
         ) 
     }

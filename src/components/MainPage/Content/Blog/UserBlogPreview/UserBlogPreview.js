@@ -1,6 +1,6 @@
 import React from 'react';
-import Avatar from '../../../../Common/Avatar/Avatar'
-import TextInfo  from '../../UserBlog/UserProfile/TextInfo'
+import Avatar from '../../../Common/Avatar/Avatar'
+import TextInfo  from './TextInfo'
 import './UserBlogPreview.css'
 
 export default function UserBlogPreview({ profile }) {
