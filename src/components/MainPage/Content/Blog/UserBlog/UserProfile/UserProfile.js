@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import { getUserProfileRequest, deleteUserProfileError } from '../../../../../../store/userProfile'
 import { postListRequest, clearPostList } from '../../../../../../store/postList'
 import Avatar from '../../../../Common/Avatar/Avatar'
-
-import PostTape from '../../../PostTape/PostTape'
+import PostPreview from '../../../../Common/PostPreview/PostPreview'
+import ScrollList from '../../../../Common/ScrollList/ScrollList'
 import TextInfo from './TextInfo'
 import './UserProfile.css'
 class UserProfile extends React.Component {
@@ -36,6 +36,10 @@ class UserProfile extends React.Component {
       this.props.clearPostList();   
     }
     
+    elementView(post) {
+      return <PostPreview post={post}/>
+    }
+
     render() {
       const profile = this.props.profile;
         return (
@@ -44,15 +48,16 @@ class UserProfile extends React.Component {
                   <Avatar profile={profile} />
                   <TextInfo profile={profile} />
                 </div>
-                <p>Posts</p>
                 {this.props.authUsername 
                   && !this.props.authUsername.localeCompare(this.props.match.params.username) 
                   && <Link to={`/post/create`}>Add new post</Link>}
-                <PostTape
-                  postList={this.props.postList}
-                  sendCriterion={(pageNumber) => {this.updatePaging(pageNumber)} }
-                  pageNumber = {this.state.pageNumber}
+                <ScrollList 
+                  list={this.props.postList}
+                  pageNumber={this.state.pageNumber}
+                  updatePageNumber={(page) => this.updatePaging(page)}
+                  elementView={this.elementView}
                 />
+                
             </div>
         ) 
     }

@@ -1,13 +1,14 @@
 import React from 'react';
+import './ErrorList.css'
 
 export default function ErrorList({ errorList }) {
     if(errorList) {
         return (
-            <ul>
+            <ul className="errorList">
                 {console.log(errorList)} 
                 {errorList.map((error, index) => 
                     <li key={index.toString()}>
-                        {error}
+                        <p>{error}</p>
                     </li>)}
             </ul>
         )

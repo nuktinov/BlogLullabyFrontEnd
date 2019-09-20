@@ -32,8 +32,10 @@
 .message  p {
     text-align: start;
     margin: 3px 7px;
-    background: rgb(179, 151, 229);
+    background-color: rgb(193, 157, 202, 0.2);
     padding: 1vh;
     max-width: 100%;
     border-radius: 10px;
+    word-wrap: break-word;
+    color: black;
 }

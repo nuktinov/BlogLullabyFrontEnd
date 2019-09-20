@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorListTypeChecking from '../../logicElements/errorListTypeChecking'
 const UPDATE_DIALOGLIST = 'GET_DIALOGLIST'
 const CLEAR_DIALOGLIST = 'CLEAR_DIALOGLIST'
 const DIALOGLIST_LOADING = 'DIALOGLIST_LOADING'
@@ -75,7 +76,7 @@ export function getDialogListRequest(payload) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setDialogListError(error.response.data));
           else
             dispatch(setDialogListError([error.response.statusText]));
@@ -101,7 +102,7 @@ export function createDialogRequest(payload) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setDialogListError(error.response.data));
           else
             dispatch(setDialogListError([error.response.statusText]));

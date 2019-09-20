@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import PostTape from '../PostTape/PostTape'
 import SiteDescription from './SiteDescription/SiteDescription'
 import { postListRequest, clearPostList } from '../../../../store/postList'
 

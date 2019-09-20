@@ -1,5 +1,5 @@
 import React from "react"
-import UserView from '../../UserView/UserView'
+import UserView from '../../../Common/UserView/UserView'
 import dateFormatter from '../../../../../logicElements/dateFormatter'
 import './Message.css'
 

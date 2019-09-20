@@ -1,5 +1,7 @@
 import React from 'react';
 import Avatar from '../../../../Common/Avatar/Avatar'
+import UploadImage from '../../../../Common/InputFileButton/InputFileButton'
+import DeleteButton from '../../../../Common/DeleteButton/DeleteButton'
 
 class UserAvatarUpdating extends React.Component {
     constructor(props) {
@@ -41,20 +43,19 @@ class UserAvatarUpdating extends React.Component {
   
   render() {
     return (
-      <div className="previewComponent">
-        Update userAvatar:
-        <form>
-          <input className="fileInput" 
-            type="file" 
-            accept="image/*"
-            onChange={(e)=>this._handleImageChange(e)} 
-          />
-        </form>
-        <Avatar profile={{...this.props.profile, avatarUrl: this.state.imagePreviewUrl}} />
-        <button className="submitButton" 
-          onClick={(e)=>this._uploadFile(e)}>Upload Image</button>
-        <button className="submitButton" 
-          onClick={(e)=>this._deleteSubmit(e)}>Delete Image</button>
+      <div className="avatarUpdating">
+        <span>Avatar:</span>
+        <div>
+          <Avatar profile={{...this.props.profile, avatarUrl: this.state.imagePreviewUrl}} />
+          <div>
+            <UploadImage 
+              onChange={(e)=>this._handleImageChange(e)}
+            />
+            <DeleteButton onClick={(e)=>this._deleteSubmit(e)}/>
+          </div>
+        </div>
+        <button className="saveBtn" 
+          onClick={(e)=>this._uploadFile(e)}>Save</button>
       </div>
     )
   }

@@ -3,7 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
+    margin: 8% 5%;
 }
 
 label {
@@ -11,10 +12,19 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 94%;
     margin: 3%;
 }
 
 input {
     width: 90%;
+}
+
+.authenticatePanel input[type=submit] {
+    width: auto;
+    border-radius: 5px;
+}
+
+.authenticatePanel form {
+    text-align:center;
 }

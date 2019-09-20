@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from 'react-router-dom'
-import UserView from '../../UserView/UserView'
+import UserView from '../UserView/UserView'
 import './PostPreview.css'
-import dateFormatter from '../../../../../logicElements/dateFormatter'
+import dateFormatter from '../../../../logicElements/dateFormatter'
 
 class PostPreview extends React.Component {
     constructor(props) {
@@ -34,6 +34,9 @@ class PostPreview extends React.Component {
         const post = this.props.post;
         return post == null ? null : (
                 <div className="postPreview">
+                    <UserView 
+                        userView={post.author}
+                    />
                     <Link to={`/post/${post.id}`} >
                         <div className="preview" 
                         style={{ 
@@ -47,9 +50,6 @@ class PostPreview extends React.Component {
                         </div>
                     </Link>
                     <div className='postPreviewData'>
-                        <UserView 
-                            userView={post.author}
-                        />
                         <data>
                             <time>
                                 {dateFormatter(post.date)}

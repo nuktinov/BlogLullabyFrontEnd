@@ -5,6 +5,9 @@
     align-items: center;
 }
 
+.userProfile > a{
+    margin: 0.5%;
+}
 
 .avatar {
     width: 30vh;
@@ -14,14 +17,17 @@
 
 .userProfile > .postList {
     width: 80%;
+    margin-top: 0;
 }
 
 
 .userProfile .basicBlock {
     display: flex;
-    width: 100%;
+    font-size: 3vh;
+    width: 90%;
+    border-bottom: 1px  solid rgb(135, 83, 161);;
 }
-.userProfile  .textInfo {
+.textInfo {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -29,10 +35,17 @@
     align-items: flex-start;
 }
 
-.userProfile  .textInfo > span{
-    margin: 3%;
+.textInfo > span{
+    margin: 1vh 2vw;
 }
 
-.userProfile  .textInfo > :first-child{
-    margin: 6% 3%;
+.textInfo > :first-child{
+    margin: 2.5vh 2vw;
+    margin-top: 0;
+    font-weight: 800;
+    font-size: 4vh;
+}
+
+.userProfile .scrollList {
+    width: 70%;
 }

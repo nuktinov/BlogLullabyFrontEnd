@@ -1,6 +1,18 @@
 .postCreating {
     display: flex;
     flex-direction: column;
+    margin-bottom: 2vh;
+}
+
+.postCreating input[type=text]{
+    font-size: 3vh;
+}
+
+.postCreating h6{
+    font-size: 3.5vh;
+    font-weight: 400;
+    margin: 0.5vh;
+    font-family: "Century Gothic";
 }
 
 .mainImage  img {

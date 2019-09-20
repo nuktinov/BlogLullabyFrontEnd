@@ -1,12 +1,15 @@
 import axios from 'axios'
+import errorListTypeChecking from '../logicElements/errorListTypeChecking'
 const UPDATE_USERLIST = 'UPDATE_USERLIST'
 const CLEAR_USERLIST = 'CLEAR_USERLIST'
 const USERLIST_LOADING = 'USERLIST_LOADING'
 const SET_USERLIST_ERROR = 'SET_USERLIST_ERROR'
 const DELETE_USERLIST_ERROR = 'DELETE_USERLIST_ERROR'
+const IS_ALL_USERS = 'IS_ALL_USERS'
 
 // action creators
 export function setUserList(payload) {
+  console.log("set")
   return {
     type: UPDATE_USERLIST,
     payload
@@ -14,6 +17,7 @@ export function setUserList(payload) {
 }
 
 export function clearUserList() {
+  console.log("clear")
   return {
     type: CLEAR_USERLIST
   }
@@ -38,25 +42,33 @@ export function deleteUserListError() {
   }
 }
 
+export function isAllUsers() {
+  return {
+    type: IS_ALL_USERS
+  }
+}
+
 // reducer
 
 const initialState = {
-  loading: false,
-  error: false,
-  errorList: [],
-  userViews: []
+  isLoading: false,
+  isAll: false,
+  errors: null,
+  elements: []
 }
 
 export default  function userList(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USERLIST:
-      return { ...state, postPreviews: action.payload }
+      return { ...state, elements: action.payload }
     case USERLIST_LOADING:
-      return { ...state, loading: !state.loading }
+      return { ...state, isLoading: !state.isLoading }
     case SET_USERLIST_ERROR:
-      return { ...state, error: true, errorList: action.payload }
+      return { ...state, errors: action.payload }
     case DELETE_USERLIST_ERROR:
-      return { ...state, error: false, errorList: [] }
+      return { ...state, errorList: null }
+    case IS_ALL_USERS:
+      return { ...state, isAll: true }
     case CLEAR_USERLIST:
       return initialState
     default:
@@ -66,22 +78,30 @@ export default  function userList(state = initialState, action) {
 
 ///thunk 
 
-export function getUserListRequest(criterion) {
-  return function(dispatch) {
+export function userListRequest(criterion) {
+  return function(dispatch, getState) {
     dispatch(userListLoading())
     axios
       .post(`/userlist`,criterion)
       .then(response => {
-        dispatch(setUserList(response.data))
+        let items = response.data;
+        if(items.length < criterion.pageSize)
+          dispatch(isAllUsers())
+        for(let i = 0; i < items.length; i++)
+          items[i] = { ...items[i], id: items[i].username}
+        if(items.length != 0) {
+          const newList = getState().userList.elements.concat(items)
+          dispatch(setUserList(newList))
+        }
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setUserListError(error.response.data));
           else
             dispatch(setUserListError([error.response.statusText]));
         } else if (error.request) {
-          console.log(error.request);
+          dispatch(setUserListError(["Error with request"]));
         } else {
           console.log('Error ', error.message);
         }

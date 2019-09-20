@@ -1,6 +1,10 @@
+.customTextarea {
+    width: 90%;
+    margin: auto;
+}
 #text_area
 {
-    width: 50vw;
+    width: 90%;
     height: 30px;
     overflow: hidden;
     padding: 5px;

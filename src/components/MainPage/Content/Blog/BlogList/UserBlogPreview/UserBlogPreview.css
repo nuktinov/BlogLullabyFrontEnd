@@ -1,0 +1,10 @@
+.userBlogPreview {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.userInfo {
+    display: flex;
+    justify-content: column;
+}
