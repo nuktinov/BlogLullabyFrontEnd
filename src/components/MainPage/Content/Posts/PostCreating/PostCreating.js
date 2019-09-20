@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { createPostRequest, clearPost } from '../../../../../store/post'
 import PostBodyCreating from './PostBodyCreating'
 import {Redirect} from 'react-router-dom'
+import InputFileButton from '../../../Common/InputFileButton/InputFileButton'
 import './PostCreating.css'
 
 class PostCreating extends React.Component {
@@ -67,10 +68,10 @@ class PostCreating extends React.Component {
 
     return (
       <div className="postCreating">
-        Adding Post:
+        <h3> Create post </h3>
         <form>
           <label>
-            Title:
+            <h6>Title:</h6>
             <input 
               type='text'
               value={this.state.title}
@@ -78,19 +79,17 @@ class PostCreating extends React.Component {
             />
           </label>
           <label className="mainImage">
-            Main Image:
-            <input className="fileInput"
-              type="file" 
-              accept="image/*"
-              onChange={(e)=>this._handleMainImageChange(e)} 
-            />
+            <h6>Main Image:</h6>
+            <InputFileButton 
+              onChange={(e)=>this._handleMainImageChange(e)}
+            /> 
             <img src={this.state.mainImagePreviewUrl}/>
           </label>   
         </form>
-        Body:
+        <h6>Body:</h6>
         <PostBodyCreating update={(body) => this.setState({ bodyBlocks: body })}  />
 
-        <button className="submitButton" 
+        <button className="saveBtn" 
           onClick={(e)=>this._upload(e)}>Create
         </button>
       </div>

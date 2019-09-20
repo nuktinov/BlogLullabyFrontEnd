@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import TextArea from '../../../../Common/TextArea/TextArea'
 import './WritingMessagePanel.css'
 function WritingMessagePanel({ sendMessage }) {
     const [message, setMessage] = useState('');
@@ -19,12 +20,13 @@ function WritingMessagePanel({ sendMessage }) {
                 className='writingMessagePanel'
                 onSubmit={send}>
                     <label>
-                        new message:
-                        <textarea 
-                        rows="4"
-                        type="text" 
-                        value={message}
-                        onChange={onChange} />
+                        Message:
+                        <TextArea 
+                            name="name"
+                            value={message}
+                            onChange={onChange}
+                            maxHeight="30vh"
+                        />
                     </label>
                     <input type="submit" value="Send" />
                 </form>

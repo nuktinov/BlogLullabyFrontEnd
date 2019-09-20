@@ -48,7 +48,7 @@ class AuthorizationForm extends React.Component {
           value={this.state.password} 
           onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Отправить" />
+        <input type="submit" value="Log in" />
       </form>
     );
   }

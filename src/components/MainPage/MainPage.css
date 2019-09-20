@@ -26,7 +26,7 @@
     padding: 0px;
     background: Ivory;
     text-align: center;
-    border-top: solid black 1px;
+    border-top: solid DarkOrchid 1px;
 }
 #pageContent {
     grid-area: pageContent;
@@ -97,6 +97,9 @@ a:hover {
     opacity: 1;
 }
 
+p {
+    color: rgb(78, 17, 109);
+}
 
 ul {
     list-style: none;
@@ -107,4 +110,53 @@ select {
     color: DarkOrchid;
     font-size: 2.5vh;
     margin: 0 1vh;
+}
+
+time {
+    white-space: nowrap;
+}
+
+
+input[type=submit] {
+    background: rgb(153, 50, 204, 0.2);
+    border-radius: 10px;
+    color: rgba(61, 17, 83);
+    margin: auto ;
+    outline: none;
+    border-color: rgb(150, 18, 150);
+}
+
+
+button {
+    background: rgba(61, 17, 83, 0.8);
+    color: white;
+    margin: 1vh 0.5vw;
+    border-color: rgb(150, 18, 150);
+    outline: none;
+}
+
+
+h3 {
+    margin-top: 2vh;
+    margin: 1vh auto;
+    color: rgb(97, 26, 133);
+    font-size: 4vh; 
+    
+}
+
+input[type=submit].saveBtn, button.saveBtn {
+    border: none;
+    background: DarkOrchid;
+    opacity: 0.7;
+    font-size: 3.5vh;
+    font-family: "Century Gothic";
+    color: white;
+    border-radius: 10px;
+    width: 90%;
+    margin: 1vh auto;
+}
+
+input[type=submit].saveBtn:hover, button.saveBtn:hover {
+    opacity: 1;
+    color: white;
 }

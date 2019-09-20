@@ -1,4 +1,5 @@
 import  axios from 'axios';
+import errorListTypeChecking from '../logicElements/errorListTypeChecking'
 import { updateAuthenticationDates } from './authentication'
 const SET_USERPROFILE = 'SET_USERPROFILE'
 const CLEAR_USERPROFILE = 'CLEAR_USERPROFILE'
@@ -90,7 +91,7 @@ export function getUserProfileRequest(name) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setUserProfileError(error.response.data));
           else
             dispatch(setUserProfileError([error.response.statusText]));
@@ -117,7 +118,7 @@ export function updateProfileTextFieldsRequest(profile) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setUserProfileError(error.response.data));
           else
             dispatch(setUserProfileError([error.response.statusText]));
@@ -152,7 +153,7 @@ export function updateProfileImagesRequest(file, image) {
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setUserProfileError(error.response.data));
           else
             dispatch(setUserProfileError([error.response.statusText]));
@@ -181,7 +182,7 @@ export function changeUsernameRequest(username) {
       .catch(error => {
 			console.log(error)
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setUserProfileError(error.response.data));
           else
             dispatch(setUserProfileError([error.response.statusText]));

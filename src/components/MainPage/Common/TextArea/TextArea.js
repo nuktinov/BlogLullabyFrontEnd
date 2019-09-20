@@ -1,7 +1,7 @@
 import React from 'react';
 import './TextArea.css'
 
-function TextArea ({name, value, onChange}) {
+function TextArea ({name, value, onChange, maxHeight}) {
 
     function textarea_resize(event) {
         const line_height = 15 ;
@@ -26,7 +26,9 @@ function TextArea ({name, value, onChange}) {
                 onKeyUp={textarea_resize}
                 name={name}
                 value={value}
-                onChange={onChange}></textarea>
+                onChange={onChange}
+                style={{ maxHeight }}>
+            </textarea>
             <div id="text_area_div"></div>        
         </div>
     )

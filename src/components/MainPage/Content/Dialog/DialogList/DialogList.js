@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getDialogListRequest, clearDialogList } from '../../../../../store/dialog/dialogList'
 import DialogPreview from './DialogPreview';
-import Loading from '../../../Common/Loading'
-import ErrorList from '../../../Common/ErrorList'
+import Loading from '../../../Common/Loading/Loading'
+import ErrorList from '../../../Common/ErrorList/ErrorList'
 import './DialogList.css'
 
 export class DialogList extends React.Component {
@@ -40,7 +40,7 @@ export class DialogList extends React.Component {
     render() {
         return (
 			<div className='dialogList'>
-			    <Link to={`/dialog/create`}>create dialog</Link>
+			    <Link to={`/dialog/create`}>Create</Link>
                 {this.props.loading ? <Loading loading={this.props.loading} /> : (
                     this.props.errorList ? <ErrorList errorList={this.props.errorList}/> : (
                         <ul > 

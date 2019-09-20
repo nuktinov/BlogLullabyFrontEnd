@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import UserAvatarUpdating from './UserAvatarUpdating'
+import TextInput from '../../../../Common/TextInput/TextInput'
+import TextArea from '../../../../Common/TextArea/TextArea'
 import {updateProfileTextFieldsRequest, 
   updateProfileImagesRequest, 
   changeUsernameRequest,
@@ -67,19 +69,49 @@ class UserBlogUpdating extends React.Component {
   render() {
     return (
       <div className='blogUpdating'>
-        <form className="userBlogTextUpdatingForm"
-          onSubmit={this.usernameSubmit}>
-            {this.label("Username", "username")}
-            <input type="submit"  value="Change username"/>
+        <h3> Update Blog </h3>
+        <form onSubmit={this.usernameSubmit}>
+          <TextInput 
+            span="Username:"
+            name="username"
+            value={this.state["username"]}
+            onChange={this.textChange} 
+          />
+          <input type="submit" value="Save" className="saveBtn"/>
         </form>
         <form className="userBlogTextUpdatingForm"
           onSubmit={this.textSubmit}>
-          {this.label("Firstname", "firstName")}
-          {this.label("Lastname", "lastName")}
-          {this.label("Specialization", "specialization")}
-          {this.label("City", "city")}
-          {this.label("Description", "description", "textarea")}
-          <input type="submit" value="Отправить" />
+          <TextInput 
+            span="Firstname:"
+            name="firstName"
+            value={this.state["firstName"]}
+            onChange={this.textChange} 
+          />
+          <TextInput 
+            span="Lastname:"
+            name="lastName"
+            value={this.state["lastName"]}
+            onChange={this.textChange} 
+          />
+          <TextInput 
+            span="Specialization:"
+            name="specialization"
+            value={this.state["specialization"]}
+            onChange={this.textChange} 
+          />
+          <TextInput 
+            span="City:"
+            name="city"
+            value={this.state["city"]}
+            onChange={this.textChange} 
+          />
+          <span>Description:</span>
+          <TextArea 
+            name="description"
+            value={this.state["description"]}
+            onChange={this.textChange}
+          />
+          <input type="submit" value="Save" className="saveBtn"/>
         </form>
         {this.props.profile &&
         <UserAvatarUpdating
@@ -112,16 +144,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(UserBlogUpdating)
-
-
-
-/*
-function UsernameUpdating() {
-  return (
-    <form className="userBlogTextUpdatingForm"
-          onSubmit={this.usernameSubmit}>
-            {this.label("Username", "userName")}
-            <input type="submit" value="Change username" />
-    </form>
-  )
-}*/

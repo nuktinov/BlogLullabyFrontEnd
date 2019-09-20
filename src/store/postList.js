@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorListTypeChecking from '../logicElements/errorListTypeChecking'
 const UPDATE_POSTLIST = 'GET_POSTSLIST'
 const CLEAR_POSTLIST = 'CLEAR_POSTSLIST'
 const POSTLIST_LOADING = 'POSTSLIST_LOADING'
@@ -50,24 +51,24 @@ export function isAllPosts() {
 // reducer
 
 const initialState = {
-  loading: false,
-  errorList: null,
-  postPreviews: [],
-  isAllPosts: false
+  isLoading: false,
+  isAll: false,
+  errors: null,
+  elements: []
 }
 
 export default  function postList(state = initialState, action) {
   switch (action.type) {
     case UPDATE_POSTLIST:
-      return { ...state, postPreviews: action.payload }
+      return { ...state, elements: action.payload }
     case POSTLIST_LOADING:
-      return { ...state, loading: action.payload }
+      return { ...state, isLoading: action.payload }
     case SET_POSTLIST_ERROR:
-      return { ...state, errorList: action.payload }
+      return { ...state, errors: action.payload }
     case DELETE_POSTLIST_ERROR:
-      return { ...state, errorList: null }
+      return { ...state, errors: null }
     case IS_ALL_POSTS:
-        return { ...state, isAllPosts: true }
+        return { ...state, isAll: true }
     case CLEAR_POSTLIST:
       return initialState
     default:
@@ -84,16 +85,17 @@ export function postListRequest(criterion) {
     axios
       .post(`/postlist`,criterion)
       .then(response => {
-        if(response.data.length == 0)
+        const items = response.data;
+        if(items.length < criterion.pageSize)
           dispatch(isAllPosts())
-        else {
-          const newList = getState().postList.postPreviews.concat(response.data)
+        if(items.length != 0) {
+          const newList = getState().postList.elements.concat(items)
           dispatch(updatePostList(newList))
         }
       })
       .catch(error => {
         if (error.response) {
-          if(error.response.data != '')
+          if(errorListTypeChecking(error.response.data))
             dispatch(setPostListError(error.response.data));
           else
             dispatch(setPostListError([error.response.statusText]));

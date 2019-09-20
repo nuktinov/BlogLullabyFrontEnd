@@ -1,3 +1,32 @@
-.PostDisplay img {
-    width: 90%;
+.PostDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.PostDisplay .userView{
+    margin: 1vh 8vh;    
+}
+
+.PostDisplay > h2{
+    margin-top: 1vh; 
+}
+
+.PostDisplay > img {
+    max-width: 90%;
+    max-height: 80vh;
+    margin: 2vh auto;
+}
+
+.PostDisplay >p {
+    width: 90%;
+    margin: 1vh auto;
+    text-align: start;
+    color: black;
+}
+
+.PostDisplay .postPreviewData p {
+    margin: 3px 5px;
+    margin-bottom: 3vh;
+}
+

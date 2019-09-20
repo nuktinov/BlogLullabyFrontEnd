@@ -4,8 +4,8 @@ import { clearAuthentication } from '../../../../store/authentication'
 import './AuthenticatePanel.css'
 import AuthorizationForm from './AutorizationForm'
 import RegistrationForm from './RegistrationForm'
-import Loading from '../../Common/Loading'
-import ErrorList from '../../Common/ErrorList'
+import Loading from '../../Common/Loading/Loading'
+import ErrorList from '../../Common/ErrorList/ErrorList'
 
 
 class AuthenticatePanel extends React.Component {
@@ -41,7 +41,7 @@ class AuthenticatePanel extends React.Component {
               /> 
             }
             <button onClick={this.handleClick}>
-              {this.state.isToggleOn ? "Вход" : "Регистрация"}
+              {this.state.isToggleOn ? "To Registation" : "To log in"}
             </button>
           </div>
           {(this.props.loading || this.props.errorList) && (

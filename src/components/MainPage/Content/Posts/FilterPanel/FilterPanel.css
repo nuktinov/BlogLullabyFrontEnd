@@ -3,6 +3,9 @@
     flex-direction: row;
     margin: 1%;
     color: DarkOrchid;
+    font-family: "Century Gothic";
+    
+
 }
 
 .filterPanel label {
@@ -16,4 +19,13 @@
     justify-content: center;
     align-items: center;
     font-size: 2.5vh;
+}
+
+select {
+    color: rgb(111, 38, 148);
+    font-size: 2.3vh;
+}
+
+.filterPanel input {
+    margin: 0 0.5vw;
 }
