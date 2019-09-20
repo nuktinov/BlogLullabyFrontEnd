@@ -27,7 +27,7 @@
     width: 90%;
     border-bottom: 1px  solid rgb(135, 83, 161);;
 }
-.userProfile  .textInfo {
+.textInfo {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -35,11 +35,11 @@
     align-items: flex-start;
 }
 
-.userProfile  .textInfo > span{
+.textInfo > span{
     margin: 1vh 2vw;
 }
 
-.userProfile  .textInfo > :first-child{
+.textInfo > :first-child{
     margin: 2.5vh 2vw;
     margin-top: 0;
     font-weight: 800;

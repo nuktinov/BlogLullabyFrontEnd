@@ -3,6 +3,8 @@
     flex-direction: row;
 }
 
-.userBlogPreview span {
-    margin: auto;
+
+.userInfo {
+    display: flex;
+    justify-content: column;
 }

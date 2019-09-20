@@ -1,13 +1,14 @@
 import React from 'react';
 import Avatar from '../../../../Common/Avatar/Avatar'
+import TextInfo  from '../../UserBlog/UserProfile/TextInfo'
 import './UserBlogPreview.css'
 
 export default function UserBlogPreview({ profile }) {
-    console.log(profile)
+    const profileInfo = {...profile, firstName: profile.fullName}
     return (  
         <div className="userBlogPreview">
             <Avatar profile={profile} />
-            <span> {profile.username}</span>    
+            <TextInfo profile={profileInfo} />   
         </div>
     )
 }
