@@ -1,0 +1,32 @@
+.filtering {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px  solid rgb(135, 83, 161);
+    width: 90%;
+    margin: auto;
+}
+
+.filtering span {
+    font-size: 3.5vh;
+    font-family: "Century Gothic";
+    color: DarkOrchid;
+    margin: auto;
+}
+
+.filtering label {
+    width: auto;
+    margin: auto;
+}
+
+.filtering input[type=checkbox] {
+    transform:scale(1.5);
+    opacity:0.9;
+    cursor:pointer;
+    margin: auto 0;
+    width: 10%;
+}
+
+.filtering :first-child {
+    width: 100%;
+    margin: 1vh auto;
+}

@@ -3,40 +3,49 @@ import { connect } from 'react-redux'
 import { userListRequest, clearUserList } from '../../../../../store/userList'
 import ScrollList from '../../../Common/ScrollList/ScrollList'
 import UserBlogPreview from '../UserBlogPreview/UserBlogPreview'
-import TextInput from '../../../Common/TextInput/TextInput'
+import FilterPanel from './FilterPanel'
+import './BlogList.css'
 
 class BlogList extends React.Component {
     constructor(props) {
-      super(props);
-      this.state = {
-        pageNumber: 0,
-        pageSize: 10,
-        username: ''
+        super(props);
+        this.state = {
+                pageNumber: 0,
+                pageSize: 10,
+                username: '',
+                fullName: '',
+                city: '',
+                online: false
       };
     }
         
     componentWillMount() {
         this.props.getUserList(this.state);
     }
+
     componentDidMount() {
     }
 
-  
     componentWillUnmount() {
       this.props.clear()
     }
 
-    updateCriterion(username) {
+    updateCriterion(e) {
         this.props.clear();
-        this.setState({ username , pageNumber: 0})
-        this.props.getUserList({ ...this.state, username, pageNumber: 0});
+        let criterion;
+        if(e.target.name === "online") 
+            criterion = { [e.target.name]: !this.state.online , pageNumber: 0};
+        else
+            criterion = { [e.target.name]: e.target.value , pageNumber: 0};
+        this.setState(criterion);
+        this.props.getUserList({ ...this.state, ...criterion});
     }
 
     updatePageNumber(pageNumber) {
         this.setState({ pageNumber });
         this.props.getUserList({ ...this.state, pageNumber});
     }
-    
+
     elementView(profile) {
         return <UserBlogPreview profile={profile}/>
     }
@@ -44,10 +53,10 @@ class BlogList extends React.Component {
     render() {
         return (
 			<div className='userList'>
-                <TextInput
-                   span="Username"
-                   value={this.state.username}
-                   onChange={(e) => this.updateCriterion(e.target.value)}
+                <h3>Blog search</h3>
+                <FilterPanel 
+                    setFilter={(e) => this.updateCriterion(e)}
+                    filters={this.state}
                 />
                 <ScrollList 
                     list={this.props.userList}
