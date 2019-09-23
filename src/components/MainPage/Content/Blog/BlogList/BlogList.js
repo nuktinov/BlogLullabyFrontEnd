@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { userListRequest, clearUserList } from '../../../../../store/userList'
 import ScrollList from '../../../Common/ScrollList/ScrollList'
@@ -47,7 +48,12 @@ class BlogList extends React.Component {
     }
 
     elementView(profile) {
-        return <UserBlogPreview profile={profile}/>
+        return (
+            <div className="userListElement">
+                <UserBlogPreview profile={profile}/>
+                <Link to={`/blog/:${profile.username}`}> Check  </Link>
+            </div>
+        )
     }
 
     render() {

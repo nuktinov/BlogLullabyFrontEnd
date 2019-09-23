@@ -2,3 +2,12 @@
     border-top: 1px  solid rgb(135, 83, 161);
     border-bottom: none;
 }
+
+.userListElement {
+    margin-bottom: 1vh;
+}
+.userListElement > a {
+    padding: 0.5vh 20%;
+    border-radius: 10px;
+    text-align: center;
+}
