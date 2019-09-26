@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import UserAvatarUpdating from './UserAvatarUpdating'
+import UserPhotoUpdating from  './UserPhotoUpdating'
 import TextInput from '../../../../Common/TextInput/TextInput'
 import TextArea from '../../../../Common/TextArea/TextArea'
 import {updateProfileTextFieldsRequest, 
@@ -115,6 +116,10 @@ class UserBlogUpdating extends React.Component {
         </form>
         {this.props.profile &&
         <UserAvatarUpdating
+          profile={this.props.profile}
+          avatarSubmit={this.props.avatarSubmit}/>}
+        {this.props.profile &&
+        <UserPhotoUpdating
           profile={this.props.profile}
           avatarSubmit={this.props.avatarSubmit}/>}
       </div>
