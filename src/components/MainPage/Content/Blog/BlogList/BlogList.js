@@ -51,7 +51,7 @@ class BlogList extends React.Component {
         return (
             <div className="userListElement">
                 <UserBlogPreview profile={profile}/>
-                <Link to={`/blog/:${profile.username}`}> Check  </Link>
+                <Link to={`/blog/${profile.username}`}> Check  </Link>
             </div>
         )
     }
