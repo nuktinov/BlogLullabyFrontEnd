@@ -22,7 +22,7 @@ class UserPhotoUpdating extends React.Component {
 
     _uploadFile(e) {
       e.preventDefault();
-      this.props.avatarSubmit(this.state.file)
+      this.props.photoSubmit(this.state.file)
     }
     
     _handleImageChange(e) {
@@ -30,12 +30,12 @@ class UserPhotoUpdating extends React.Component {
   
       let reader = new FileReader();
       let file = e.target.files[0];
-  
+      const save = (imagePreviewUrl) => this.setState({
+        file,
+        imagePreviewUrl
+      });
       reader.onloadend = () => {
-        this.setState({
-          file: file,
-          imagePreviewUrl: reader.result
-        });
+        save(reader.result)
       }
       reader.readAsDataURL(file)
     }
@@ -45,7 +45,7 @@ class UserPhotoUpdating extends React.Component {
       <div className="photoUpdating">
         <span>Photo:</span>
         <div>
-          <img src={this.props.profile.photoUrl}></img>
+          <img src={this.state.imagePreviewUrl}></img>
           <div>
             <UploadImage 
               onChange={(e)=>this._handleImageChange(e)}

@@ -17,7 +17,7 @@ export default function TextInfo({ profile }) {
     <div className="textInfo">
       <span> {profile.username} </span>
       <span style={{color: statusColor}}> {activeStatus} </span>
-      <span> {profile.firstName} {profile.lastName}</span>
+      <span> {profile.firstname} {profile.lastname}</span>
       <span> {profile.city} </span>
       <span> Total visits: {profile.totalVisits} </span>
     </div>
