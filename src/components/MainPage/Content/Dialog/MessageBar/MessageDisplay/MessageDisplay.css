@@ -1,8 +1,6 @@
 .MessageDisplay {
-
     width: 100%;
-    overflow: auto;
-    height: 100%;
+    margin-bottom: 10%;
 }
 
 .MessageDisplay > ul > li {

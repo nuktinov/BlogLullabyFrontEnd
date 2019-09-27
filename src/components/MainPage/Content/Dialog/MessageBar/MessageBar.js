@@ -14,10 +14,14 @@ class MessageBar extends React.Component {
     }
 
     componentDidMount() {
-        
+        const element = document.querySelector("#pageFooter")
+        element.style.visibility = "hidden";
+        element.style.height = "0px";
     }
 
     componentWillUnmount() {
+        const element = document.querySelector("#pageFooter")
+        element.style = null; 
     }
 
     sendMessage(messageText) {

@@ -2,10 +2,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 65%;
+    height: 15%;
+    height: auto;
     max-height: 50%;
     border-top: solid rgb(107, 73, 107) 1px;
+    position: fixed; 
+    left: auto; bottom: 0; right: auto;
+    background: white;
 }
+
+@media all and (max-width: 800px) {
+    .writingMessagePanel {
+        width: 100%;
+    }
+}
+
 .writingMessagePanel textarea {
     width: 95%;
     margin: 2%;

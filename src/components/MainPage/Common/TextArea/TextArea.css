@@ -25,3 +25,10 @@
     position: absolute;
     left: -9999px;
 }
+
+
+@media all and (max-width: 800px) {
+    #text_area , #text_area_div{
+        font-size: 3vh;
+    }
+}
