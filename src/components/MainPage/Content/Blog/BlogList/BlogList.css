@@ -3,6 +3,10 @@
     border-bottom: none;
 }
 
+.userList ul > :first-child .userBlogPreview {
+    border: none;
+}
+
 .userListElement {
     margin-bottom: 1vh;
 }

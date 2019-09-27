@@ -11,12 +11,12 @@ class BlogList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-                pageNumber: 0,
-                pageSize: 10,
-                username: '',
-                fullName: '',
-                city: '',
-                online: false
+            pageNumber: 0,
+            pageSize: 10,
+            username: '',
+            fullName: '',
+            city: '',
+            online: false     
       };
     }
         
@@ -31,15 +31,11 @@ class BlogList extends React.Component {
       this.props.clear()
     }
 
-    updateCriterion(e) {
+    updateCriterion(criterion) {
+        console.log(criterion)
         this.props.clear();
-        let criterion;
-        if(e.target.name === "online") 
-            criterion = { [e.target.name]: !this.state.online , pageNumber: 0};
-        else
-            criterion = { [e.target.name]: e.target.value , pageNumber: 0};
-        this.setState(criterion);
-        this.props.getUserList({ ...this.state, ...criterion});
+        this.setState({ ...criterion, pageNumber: 0 });
+        this.props.getUserList({ ...this.state, ...criterion, pageNumber: 0 });
     }
 
     updatePageNumber(pageNumber) {
