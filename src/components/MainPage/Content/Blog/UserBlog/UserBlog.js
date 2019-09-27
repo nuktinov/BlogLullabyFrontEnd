@@ -4,7 +4,7 @@ import {Switch, Route, Link} from 'react-router-dom'
 import Loading from '../../../Common/Loading/Loading'
 import ErrorList from '../../../Common/ErrorList/ErrorList'
 import UserProfile from './UserProfile/UserProfile'
-import UserAbout from './UserAbout'
+import UserAbout from './UserProfileAbout/UserAbout'
 import { getUserProfileRequest, deleteUserProfileError } from '../../../../../store/userProfile'
 import './UserBlog.css'
 

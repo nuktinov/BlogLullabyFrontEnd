@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { dialogCreatingRequest, clearDialogCreating } from '../../../../../store/dialog/dialogCreating'
+import TextInput from '../../../Common/TextInput/TextInput'
 import Loading from '../../../Common/Loading/Loading'
 import ErrorList from '../../../Common/ErrorList/ErrorList'
 import './DialogCreating.css'
@@ -13,9 +14,6 @@ class DialogCreating extends React.Component {
       title: '',
       members: ['']
 	  }
-    this.textSubmit = this.textSubmit.bind(this);
-    this.textChange = this.textChange.bind(this);
-	  this.titleChange = this.titleChange.bind(this);
   }
 
   textChange(event){
@@ -30,27 +28,6 @@ class DialogCreating extends React.Component {
       this.setState({members});
     }
   }
-  
-  label = (value, index) => (
-    <label>
-      <span>member {index + 1}:</span>
-      <input 
-        type="text" 
-        name={index}
-        value={value ? value : ''}
-        onChange={this.textChange} />
-    </label>
-  )
-  
-  titleLabel = () => (
-    <label>
-      <span>title:</span>
-      <input 
-        type="text" 
-        value={this.state.title}
-        onChange={this.titleChange} />
-    </label>
-  )
 
   componentDidUpdate(){
     if(this.state.members[this.state.members.length - 1]) {
@@ -64,10 +41,6 @@ class DialogCreating extends React.Component {
     this.props.clearDialogCreating();
   }
   
-  titleChange(event) {
-    this.setState({title: event.target.value});
-  }
-
   textSubmit(event) {
     event.preventDefault();
     let members = this.state.members;
@@ -81,10 +54,21 @@ class DialogCreating extends React.Component {
     return (
       <div>
         <form
-          onSubmit={this.textSubmit}>
-          {this.titleLabel()}
-			    {this.state.members.map((item,index) => this.label(item, index)) }
-          <input type="submit" value="Create" id="CreatingBtn"/>
+          onSubmit={e => this.textSubmit(e)}>
+          <TextInput
+            span="Title:"
+            value={this.state.title}
+            onChange={e => this.setState({title: e.target.value})}
+          />
+			    {this.state.members.map((value,index) => 
+            <TextInput
+              span={`Member ${index + 1}:`}
+              name={index}
+              value={value}
+              onChange={(e) =>this.textChange(e)}
+            />
+          )}
+          <input type="submit" value="Create" className="saveBtn"/>
         </form>
         <Loading loading={this.props.loading} />
         <ErrorList errorList={this.props.errorList} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import UserAvatarUpdating from './UserAvatarUpdating'
+import UserPhotoUpdating from  './UserPhotoUpdating'
 import TextInput from '../../../../Common/TextInput/TextInput'
 import TextArea from '../../../../Common/TextArea/TextArea'
 import {updateProfileTextFieldsRequest, 
@@ -22,10 +23,10 @@ class UserBlogUpdating extends React.Component {
     this.usernameSubmit = this.usernameSubmit.bind(this);
   }
 
-
   componentWillMount() {
     this.props.getUserProfile(this.props.authUsername);
   }
+
   componentDidUpdate(){
     if(this.props.IsExecutingSuccess){
       this.props.successToggle();
@@ -55,15 +56,13 @@ class UserBlogUpdating extends React.Component {
     event.preventDefault();
   }
 
-  label = (viewString, inputName, type = "text") => (
-    <label>
-      {viewString}:
-      <input 
-        type={type} 
-        name={inputName}
-        value={this.state[inputName] ? this.state[inputName] : ''}
-        onChange={this.textChange} />
-    </label>
+  input = (text) => (
+    <TextInput 
+      span={text}
+      name={text.toLowerCase().slice(0,-1)}
+      value={this.state[text.toLowerCase().slice(0,-1)]}
+      onChange={this.textChange} 
+    />
   )
 
   render() {
@@ -71,40 +70,15 @@ class UserBlogUpdating extends React.Component {
       <div className='blogUpdating'>
         <h3> Update Blog </h3>
         <form onSubmit={this.usernameSubmit}>
-          <TextInput 
-            span="Username:"
-            name="username"
-            value={this.state["username"]}
-            onChange={this.textChange} 
-          />
+          {this.input("Username:")}
           <input type="submit" value="Save" className="saveBtn"/>
         </form>
         <form className="userBlogTextUpdatingForm"
           onSubmit={this.textSubmit}>
-          <TextInput 
-            span="Firstname:"
-            name="firstName"
-            value={this.state["firstName"]}
-            onChange={this.textChange} 
-          />
-          <TextInput 
-            span="Lastname:"
-            name="lastName"
-            value={this.state["lastName"]}
-            onChange={this.textChange} 
-          />
-          <TextInput 
-            span="Specialization:"
-            name="specialization"
-            value={this.state["specialization"]}
-            onChange={this.textChange} 
-          />
-          <TextInput 
-            span="City:"
-            name="city"
-            value={this.state["city"]}
-            onChange={this.textChange} 
-          />
+          {this.input("Firstname:")}
+          {this.input("Lastname:")}
+          {this.input("Specialization:")}
+          {this.input("City:")}
           <span>Description:</span>
           <TextArea 
             name="description"
@@ -117,6 +91,10 @@ class UserBlogUpdating extends React.Component {
         <UserAvatarUpdating
           profile={this.props.profile}
           avatarSubmit={this.props.avatarSubmit}/>}
+        {this.props.profile &&
+        <UserPhotoUpdating
+          profile={this.props.profile}
+          photoSubmit={this.props.photoSubmit}/>}
       </div>
     );
   }

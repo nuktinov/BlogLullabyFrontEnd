@@ -1,9 +1,10 @@
 import React from 'react';
+import './ErrorPage.css'
 
 function ErrorPage () {
     return (
-        <div>
-            Page not found.
+        <div className="errorPage">
+            <h2> Page not found. </h2>
         </div>
     )
 };

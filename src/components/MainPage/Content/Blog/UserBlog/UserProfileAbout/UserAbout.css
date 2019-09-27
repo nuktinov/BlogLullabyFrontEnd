@@ -1,0 +1,27 @@
+.userPhoto {
+    position: relative;
+    display: inline-block;
+    width: 90%;
+    text-align: right;
+}
+
+.userPhoto span {
+    background: rgba(0,0,0,0.7); 
+    color: #fff;
+    border-radius: 3px;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    font-size: 2vh;
+    padding: 3px 5px;
+    max-width: 40%;
+    text-align: left;
+
+}
+
+.userProfileAbout > p{
+    width: 80%;
+    text-align: left;
+    margin: 2vh auto;
+    font-size: 3vh;
+}
