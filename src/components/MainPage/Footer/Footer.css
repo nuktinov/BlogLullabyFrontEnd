@@ -17,9 +17,9 @@
     display: flex;
     min-width: 5px;
     min-height: 5px;
-    /*max-width: 60px;*/
-    height: 80%;
     padding: 3px;
+    height: 4vh;
+    width: 4vh;
 }
 
 .contact > p {

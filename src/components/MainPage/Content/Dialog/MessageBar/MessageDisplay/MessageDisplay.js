@@ -11,15 +11,16 @@ class MessageDisplay extends React.Component {
     }
 
     componentWillUpdate() {
-        const element = document.querySelector(".MessageDisplay");
+        const element = document.documentElement;
         if(this.state.scrollingDown)
             element.scrollTop = element.scrollHeight;
-        if(Math.floor(element.scrollTop + element.clientHeight) == element.scrollHeight && this.state.scrollingDown != true)
+        if(Math.floor(element.scrollTop + element.clientHeight) >= (element.scrollHeight - 5) && this.state.scrollingDown != true)
             this.setState({ scrollingDown: true})
     }
 
     componentDidMount() {
         this.timerID = setInterval( () => {this.props.updateDisplay()}, 1500);
+        window.onscroll = () => this.setState({scrollingDown: false})
     }
 
     componentWillUnmount() {

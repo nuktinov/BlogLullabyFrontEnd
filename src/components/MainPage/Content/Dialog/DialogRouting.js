@@ -13,14 +13,14 @@ class DialogRouting extends React.Component {
     }
 		
     componentDidMount() {
-        const element = document.querySelector("#mainPage")
-        element.style.gridTemplateRows = "8% 92% 15%";
+        //const element = document.querySelector("#mainPage")
+        //element.style.gridTemplateRows = "8% 92% 15%";
     }
 	
 
     componentWillUnmount() {
-        const element = document.querySelector("#mainPage")
-        element.style = null; 
+        //const element = document.querySelector("#mainPage")
+        //element.style = null; 
     }
   
     render() {

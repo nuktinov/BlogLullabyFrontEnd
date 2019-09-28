@@ -1,6 +1,6 @@
 .MessageBar {
     width: 100%;
-    height: 100%;
+    /*height: 87vh;*/
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -11,4 +11,10 @@
     margin: 1vh;
     margin-bottom: 0;
     font-size: 3vh;
+}
+
+@media all and (max-width: 800px) {
+    .MessageBar {
+        height: 100%;
+    }
 }
