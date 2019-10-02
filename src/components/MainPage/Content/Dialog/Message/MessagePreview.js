@@ -7,11 +7,14 @@ import './MessagePreview.css'
 //var a;
 
 function MessagePreview({ message }) {
-	if(message)
+	if(message) {
+		let className = "";
+		if(!message.isRead) 
+			className = "notRead";
     	return (
 			<div className='messagePreview'>
-				<UserView userView={message.owner}/>
-            	<div className='messagePreviewData'>
+				<UserView userView={message.sender}/>
+            	<div className="messagePreviewData" id={`${className}`}>
                 	<time>{dateFormatter(message.date)}</time>
 					<div className="box-text">
 						{message.body}
@@ -19,6 +22,7 @@ function MessagePreview({ message }) {
                 </div>
 			</div>
 		)
+	}
 	return null;
 }
 

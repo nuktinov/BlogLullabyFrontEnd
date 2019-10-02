@@ -44,19 +44,20 @@ export function deleteDialogListError() {
 const initialState = {
   loading: false,
   errorList: null,
-  dialogs: []
+  dialogs: [],
+  pageCount: 0
 }
 
 export default  function dialogList(state = initialState, action) {
   switch (action.type) {
     case UPDATE_DIALOGLIST:
-      return { ...state, dialogs: action.payload }
+      return { ...state, dialogs: action.payload.item1, pageCount: action.payload.item2 }
     case DIALOGLIST_LOADING:
       return { ...state, loading: !state.loading }
     case SET_DIALOGLIST_ERROR:
-      return { ...state, error: true, errorList: action.payload }
+      return { ...state, errorList: action.payload }
     case DELETE_DIALOGLIST_ERROR:
-      return { ...state, error: false, errorList: [] }
+      return { ...state, errorList: null }
     case CLEAR_DIALOGLIST:
       return initialState
     default:
@@ -66,13 +67,16 @@ export default  function dialogList(state = initialState, action) {
 
 ///thunk 
 
+const url = `/dialog`;
+
 export function getDialogListRequest(payload) {
   return function(dispatch) {
     dispatch(dialogListLoading())
     axios
-      .get(`/communicating`)
+      .get(url)
       .then(response => {
         dispatch(updateDialogList(response.data))
+        console.log(response.data)
       })
       .catch(error => {
         if (error.response) {
@@ -96,7 +100,7 @@ export function createDialogRequest(payload) {
   return function(dispatch) {
     dispatch(dialogListLoading())
     axios
-      .post(`/communicating`, payload)
+      .post(url, payload)
       .then(response => {
         dispatch(updateDialogList(response.data))
       })

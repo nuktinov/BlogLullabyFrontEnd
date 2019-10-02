@@ -89,7 +89,7 @@ export function sendMessageRequest(payload) {
   return function(dispatch) {
     dispatch(dialogLoading())
     axios
-      .post(`/communicating/sendmessage`, payload)
+      .post(`/message/sendmessage`, payload)
       .then(response => {
         dispatch(setDialogSuccess())
       })
@@ -115,13 +115,40 @@ export function getDialogRequest(id) {
   return function(dispatch) {
     dispatch(dialogLoading())
     axios
-      .get(`/communicating/${id}`)
+      .get(`/dialog/${id}`)
       .then(response => {
         dispatch(setDialog(response.data))
       })
       .catch(error => {
         if (error.response) {
           console.log(error.response);
+          if(errorListTypeChecking(error.response.data))
+            dispatch(setDialogError(error.response.data));
+          else
+            dispatch(setDialogError([error.response.statusText]));
+        } else if (error.request) {
+          dispatch(setDialogError(["Error with requesting"]))
+        } else {
+          console.log('Error ', error.message);
+        }
+      })
+      .finally(() => {
+        dispatch(dialogLoading())
+      });
+  }
+}
+
+export function readMessageRequest(id) {
+  return function(dispatch) {
+    dispatch(dialogLoading())
+    axios
+      .put(`/message/${id}`)
+      .then(response => {
+        dispatch(setDialogSuccess())
+        console.log("запрос")
+      })
+      .catch(error => {
+        if (error.response) {
           if(errorListTypeChecking(error.response.data))
             dispatch(setDialogError(error.response.data));
           else
