@@ -58,12 +58,13 @@ export default  function dialogCreating(state = initialState, action) {
 
 ///thunk 
 
+const url = `/dialog/create`;
 export function dialogCreatingRequest(payload) {
   return function(dispatch) {
     dispatch(clearDialogCreating())
     dispatch(dialogCreatingLoading(true))
     axios
-      .post(`/communicating`, payload)
+      .post(url, payload)
       .then(response => {
         dispatch(setDialogCreatingSuccess())
       })

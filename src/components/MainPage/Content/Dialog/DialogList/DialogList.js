@@ -43,7 +43,8 @@ export class DialogList extends React.Component {
 			    <Link to={`/dialog/create`}>Create</Link>
                 {this.props.loading ? <Loading loading={this.props.loading} /> : (
                     this.props.errorList ? <ErrorList errorList={this.props.errorList}/> : (
-                        <ul > 
+                        <ul> 
+                            <span>PageCount: {this.props.pageCount}</span>
                             {this.props.dialogs.map((dialog) => 
                                 <li key={dialog.id.toString()}>
                                     <DialogPreview dialog={dialog}/>
@@ -69,7 +70,8 @@ const mapStateToProps = state => {
     return {
       dialogs: state.dialogList.dialogs,
 	  loading: state.dialogList.loading,
-	  errorList: state.dialogList.errorList
+      errorList: state.dialogList.errorList,
+      pageCount: state.dialogList.pageCount
     }
 }
 

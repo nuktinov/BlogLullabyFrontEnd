@@ -39,3 +39,7 @@
     word-wrap: break-word;
     color: black;
 }
+
+#notRead {
+    background-color: rgba(206, 37, 74, 0.3);
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Message from '../../Message/Message'
+import { readMessageRequest } from '../../../../../../store/dialog/dialog'
 import './MessageDisplay.css'
 class MessageDisplay extends React.Component {
     constructor(props) {
@@ -18,10 +19,32 @@ class MessageDisplay extends React.Component {
             this.setState({ scrollingDown: true})
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.timerID = setInterval( () => {this.props.updateDisplay()}, 1500);
-        window.onscroll = () => this.setState({scrollingDown: false})
     }
+    componentDidMount() {
+        window.onscroll = () => this.setState({scrollingDown: false})
+        if(this.props.messages != null) {
+            const mess = this.props.messages.pop();
+            console.log(!mess.isRead)
+            console.log(mess.sender != this.props.accountUsername)
+            if(!mess.isRead && mess.sender != this.props.accountUsername)
+            {
+                console.log("read")
+                this.props.read(mess.id);
+            }
+        }
+    }
+
+    /*componentDidUpdate() {
+        if(this.props.messages != null) {
+            const mess = this.props.messages.pop();
+            if(!mess.isRead && mess.owner != this.props.accountUsername)
+            {
+                this.props.read(mess.Id);
+            }
+        }
+    }*/
 
     componentWillUnmount() {
         clearInterval(this.timerID)
@@ -47,7 +70,7 @@ class MessageDisplay extends React.Component {
                                 >
                                 <Message 
                                     message={message}
-                                    isAccountMessage={this.checkOwner(message.owner.username)}
+                                    isAccountMessage={this.checkOwner(message.sender.username)}
                                 />
                             </li>)}
                     </ul>
@@ -61,11 +84,19 @@ const mapStateToProps = state => {
     return {
       dialogs: state.dialogList.dialogs,
 	  loading: state.dialogList.loading,
-	  errorList: state.dialogList.errorList
+      errorList: state.dialogList.errorList,
+      accountUsername: state.authentication.username, 
     }
-  }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        read: (payload) => { dispatch(readMessageRequest(payload)) }
+    }
+}
 
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(MessageDisplay)
