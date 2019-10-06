@@ -1,7 +1,7 @@
 import React from 'react';
 import './Loading.css'
 
-export default function Loading({ loading }) {
+export default function Loading({ loading = true }) {
     if(loading)
         return (
             <div id="floatingCirclesG">

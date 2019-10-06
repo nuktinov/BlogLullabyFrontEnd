@@ -3,7 +3,7 @@ import { Switch, Route} from 'react-router-dom'
 
 import DialogList from './DialogList/DialogList'
 import DialogCreating from './DialogCreating/DialogCreating'
-import MessageBar from './MessageBar/MessageBar'
+import DialogRoom from './DialogRoom/DialogRoom';
 import("./Dialog.css")
 
 
@@ -29,7 +29,7 @@ class DialogRouting extends React.Component {
                 <Switch>
                     <Route exact path="/dialog" component={DialogList} />
                     <Route  exact path="/dialog/create" component={DialogCreating} />
-                    <Route  path='/dialog/:id' component={MessageBar} />
+                    <Route  path='/dialog/:id' component={DialogRoom} />
                 </Switch>
             </div>
         )
@@ -51,7 +51,7 @@ function DialogRoutingg () {
             <Switch>
                 <Route exact path="/dialog" component={DialogList} />
 				<Route  exact path="/dialog/create" component={DialogCreating} />
-                <Route  path='/dialog/:id' component={MessageBar} />
+                <Route  path='/dialog/:id' component={DialogRoom} />
             </Switch>
         </div>
     )
