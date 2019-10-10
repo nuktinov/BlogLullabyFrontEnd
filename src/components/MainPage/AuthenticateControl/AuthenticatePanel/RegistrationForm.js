@@ -1,9 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import {userRegistrationRequest, clearAuthentication } from '../../../../store/authentication'
 
-
-class RegistrationForm extends React.Component {
+export default class RegistrationForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,24 +11,18 @@ class RegistrationForm extends React.Component {
       password: '',
       confirmPassword: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidUpdate() {
     if(this.props.successRequesting)
       alert('To continue registration, move to your email, and confirm registration.');
   }
-  componentWillUnmount() {
-    this.props.clear();
-  }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     this.props.submit(this.state);
     event.preventDefault();
   }
@@ -62,12 +53,3 @@ class RegistrationForm extends React.Component {
     );
   }
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    submit: (payload) => dispatch(userRegistrationRequest(payload)),
-    clear: () => dispatch(clearAuthentication())
-  }
-}
-
-export default connect(null,mapDispatchToProps)(RegistrationForm)

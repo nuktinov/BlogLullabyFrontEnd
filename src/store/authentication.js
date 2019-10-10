@@ -49,10 +49,10 @@ export function clearAuthentication() {
 
 const initialState = {
     logIn: false,
-    error: false,
     errorList: null,
     username: null,
-    success: false
+    success: false,
+    loading: false
 }
 
 export default  function authentication(state = initialState, action) {
@@ -62,9 +62,9 @@ export default  function authentication(state = initialState, action) {
     case AUTHENTICATION_LOADING:
       return { ...state, loading: !state.loading }
     case SET_AUTHENTICATION_ERROR:
-      return { ...state, error: true, errorList: action.payload }
+      return { ...state, errorList: action.payload }
     case DELETE_AUTHENTICATION_ERROR:
-      return { ...state, error: false, errorList: null }
+      return { ...state, errorList: null }
     case SET_AUTHENTICATION_REQUEST_SUCCESS:
       return { ...state, success: true }
     case CLEAR_AUTHENTICATION:

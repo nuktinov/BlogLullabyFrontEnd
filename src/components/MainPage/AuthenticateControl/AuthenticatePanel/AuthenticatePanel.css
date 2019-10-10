@@ -28,3 +28,8 @@ input {
 .authenticatePanel form {
     text-align:center;
 }
+
+
+.authenticatePanel .f_circleG{
+    background-color:#f0ddee;
+}

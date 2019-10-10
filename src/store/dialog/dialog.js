@@ -1,13 +1,12 @@
-import axios from 'axios'
-import errorListTypeChecking from '../../logicElements/errorListTypeChecking'
 const SET_DIALOG = 'SET_DIALOG'
 const CLEAR_DIALOG = 'CLEAR_DIALOG'
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const ADD_PREVIOUS_MESSAGES = 'ADD_PREVIOUS_MESSAGES'
-const DIALOG_LOADING = 'DIALOG_LOADING'//
-const SET_DIALOG_ERROR = 'SET_DIALOG_ERROR'//
-const DELETE_DIALOG_ERROR = 'DELETE_DIALOG_ERROR'//
+const DIALOG_LOADING = 'DIALOG_LOADING'
+const SET_DIALOG_ERROR = 'SET_DIALOG_ERROR'
+const DELETE_DIALOG_ERROR = 'DELETE_DIALOG_ERROR'
 const READ_MESSAGE = 'READ_MESSAGE'
+
 // action creators
 export function setDialog(payload) {
   return {
