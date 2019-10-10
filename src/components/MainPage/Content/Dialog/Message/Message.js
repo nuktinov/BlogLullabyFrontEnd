@@ -22,7 +22,6 @@ function Message({ message, isAccountMessage }) {
 					<p id={`${readStatus}`}>
 						{message.body}
 					</p>
-					{message.isRead ? "прочитано" : "not read"}
 				</div>
 			</div>
 		)
