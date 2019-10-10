@@ -1,5 +1,6 @@
 import React from 'react';
 import Message from '../../Message/Message'
+import checkVisible from '../../../../../../logicElements/checkVisible'
 import './MessageDisplay.css'
 
 class MessageDisplay extends React.Component {
@@ -42,33 +43,25 @@ class MessageDisplay extends React.Component {
                 this.messagesCount = this.props.messages.length;
                 this.props.loadPreviousMessages();
             }
-        }
-        ///
-        ////////////////// нужное позже
-        /*
-        if(this.props.messages != null) {
-            const mess = this.props.messages.pop();
-            console.log(!mess.isRead)
-            console.log(mess.sender != this.props.accountUsername)
-            if(!mess.isRead && mess.sender != this.props.accountUsername)
-            {
-                console.log("read")
-                this.props.read(mess.id);
+
+            // функционал для отметки сообщений прочитанными
+            let lastMess = {
+                date: new Date(1950, 0, 1).toString()
             }
-        }*/
+            this.props.messages && 
+            this.props.messages.map((message) => {
+                let target = document.querySelector(`#mess${message.id}`);
+                checkVisible(target) && !message.isRead && message.sender.username !== this.props.accountUsername
+                    && new Date(message.date) > new Date(lastMess.date) 
+                    && (lastMess = message)
+            });
+            if(lastMess.id)
+                this.props.readMessage(lastMess.id)
+        }
     }
 
-    /*componentDidUpdate() {
-        if(this.props.messages != null) {
-            const mess = this.props.messages.pop();
-            if(!mess.isRead && mess.owner != this.props.accountUsername)
-            {
-                this.props.read(mess.Id);
-            }
-        }
-    }*/
-
     componentWillUnmount() {
+        window.onscroll =  null;
     }
 
     checkOwner(username){
@@ -78,11 +71,13 @@ class MessageDisplay extends React.Component {
 
     render() {
         return (
-            <div className="MessageDisplay"> 
+            <div className="messageDisplay"> 
                 {this.props.messages && (
                     <ul> 
                         {this.props.messages.map((message) => 
-                            <li key={message.id}>
+                            <li key={message.id} 
+                                id={`mess${message.id}`} 
+                                className={message.isRead ? null : "notReadMessage"}>
                                 <Message 
                                     message={message}
                                     isAccountMessage={this.checkOwner(message.sender.username)}

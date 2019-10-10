@@ -1,15 +1,19 @@
-.MessageDisplay {
+.messageDisplay {
     width: 100%;
     margin-bottom: 10%;
 }
 
-.MessageDisplay > ul > li {
+.messageDisplay > ul > li {
     display: flex;
     align-self: flex-start;
     flex: 0 0 auto;
     width: auto;
 }
 
-.MessageDisplay > ul {
+.messageDisplay > ul {
     margin: 2%;
+}
+
+.notReadMessage {
+    background: rgba(212, 75, 212, 0.2)
 }

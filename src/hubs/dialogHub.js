@@ -5,7 +5,8 @@ const signalR = require("@aspnet/signalr")
 
 const { dispatch } = store
 
-const { setDialog, clearDialog, addMessage, setDialogError, dialogLoading, addPreviousMessages} = 
+const { setDialog, clearDialog, addMessage, setDialogError, 
+    dialogLoading, addPreviousMessages, readMessage} = 
     bindActionCreators(actions, dispatch)
 
 export default class dialogHub {
@@ -19,12 +20,13 @@ export default class dialogHub {
     }
 
     connect(dialogId) {
+        this.dialogId = dialogId
         dialogLoading()
         this.hubConnection
             .start()
             .then(() => {
                 this.hubConnection
-                    .invoke("ConnectToDialogue", dialogId)
+                    .invoke("ConnectToDialogue", this.dialogId)
                     .then(() => console.log('Connection to dialogue'))
             })
             .catch(err => console.log('Error while establishing connection: '));
@@ -43,10 +45,23 @@ export default class dialogHub {
         })
 
         this.hubConnection.on("ReadMessage", function (data) {
-            console.log(data);
+            const readMess = store.getState().dialog.dialog.messages.find(x => x.id === data)
+            readMessage(readMess);
         })
     }
     
+    readMessage(messageId) {
+        return this.hubConnection
+            .invoke("ReadMessage", messageId, this.dialogId)
+            .then(() => {
+                console.log("read mess request")
+            })
+            .catch(err => {
+                console.error(err)
+                return false;
+            });
+    }
+
     sendMessage(message) {
         return this.hubConnection
             .invoke("SendMessage", message)
@@ -59,10 +74,10 @@ export default class dialogHub {
             });
     }
 
-    loadPreviousMessages(dialogId, requestNumber){
+    loadPreviousMessages(requestNumber){
         dialogLoading()
         this.hubConnection
-            .invoke("LoadPreviousMessages", dialogId, requestNumber)
+            .invoke("LoadPreviousMessages", this.dialogId, requestNumber)
             .catch(err => {
                 console.error(err)
             })

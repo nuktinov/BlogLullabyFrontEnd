@@ -7,6 +7,7 @@ const ADD_PREVIOUS_MESSAGES = 'ADD_PREVIOUS_MESSAGES'
 const DIALOG_LOADING = 'DIALOG_LOADING'//
 const SET_DIALOG_ERROR = 'SET_DIALOG_ERROR'//
 const DELETE_DIALOG_ERROR = 'DELETE_DIALOG_ERROR'//
+const READ_MESSAGE = 'READ_MESSAGE'
 // action creators
 export function setDialog(payload) {
   return {
@@ -53,12 +54,13 @@ export function deleteDialogError() {
     type: DELETE_DIALOG_ERROR
   }
 }
-/*
-export function IsAllMessagesLoading() {
+
+export function readMessage(payload) {
   return {
-    type: IS_ALL_MESSAGES_LOADING
+    type: READ_MESSAGE,
+    payload
   }
-}*/
+}
 
 // reducer
 
@@ -95,6 +97,16 @@ export default  function dialog(state = initialState, action) {
       return { ...state, error: true, errorList: action.payload }
     case DELETE_DIALOG_ERROR:
       return { ...state, error: false, errorList: null }
+    case READ_MESSAGE:
+      return {...state, dialog: {...state.dialog, 
+          messages: state.dialog.messages.map((message) => {
+            if(!message.isRead 
+            && new Date(message.date) <= new Date(action.payload.date))
+              return { ...message, isRead: true}
+            else return message
+          })
+        },
+      }
     case CLEAR_DIALOG:
       return initialState
     default:

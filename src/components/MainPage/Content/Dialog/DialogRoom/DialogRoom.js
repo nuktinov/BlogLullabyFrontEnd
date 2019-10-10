@@ -21,7 +21,7 @@ class DialogRoom extends React.Component {
         element.style.height = "0px";
         // подключаемсяя к хабу и получаем диалог
         this.hub = new dialogHub();
-        this.hub.connect(this.props.match.params.id);
+        this.hub.connect(this.state.dialogId);
     }
 
     componentWillUnmount() {
@@ -40,9 +40,13 @@ class DialogRoom extends React.Component {
         return this.hub.sendMessage(mess);
     }
 
+    readMessage(messageId){
+        this.hub.readMessage(messageId)
+    }
+
     loadPreviousMessages() {
         if(!this.props.IsAllMessagesLoading) {
-            this.hub.loadPreviousMessages(this.state.dialogId, this.props.dialog.messages.length);
+            this.hub.loadPreviousMessages(this.props.dialog.messages.length);
         }
     }
     
@@ -57,6 +61,7 @@ class DialogRoom extends React.Component {
                         messages={this.props.dialog.messages}
                         accountUsername={this.props.accountUsername}
                         loadPreviousMessages={() => this.loadPreviousMessages()}
+                        readMessage={(id) => this.readMessage(id)}
                     />
                 }
                 <WritingMessagePanel sendMessage={(message) => this.sendMessage(message)}/>
