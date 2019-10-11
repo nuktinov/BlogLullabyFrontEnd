@@ -42,18 +42,18 @@ export function deleteDialogListError() {
 // reducer
 
 const initialState = {
-  loading: false,
+  isLoading: false,
   errorList: null,
-  dialogs: [],
+  elements: [],
   pageCount: 0
 }
 
 export default  function dialogList(state = initialState, action) {
   switch (action.type) {
     case UPDATE_DIALOGLIST:
-      return { ...state, dialogs: action.payload.item1, pageCount: action.payload.item2 }
+      return { ...state, elements: state.elements.concat(action.payload.item1), pageCount: action.payload.item2 }
     case DIALOGLIST_LOADING:
-      return { ...state, loading: !state.loading }
+      return { ...state, isLoading: !state.isLoading }
     case SET_DIALOGLIST_ERROR:
       return { ...state, errorList: action.payload }
     case DELETE_DIALOGLIST_ERROR:
@@ -68,15 +68,13 @@ export default  function dialogList(state = initialState, action) {
 ///thunk 
 
 const url = `/dialog`;
-
 export function getDialogListRequest(payload) {
   return function(dispatch) {
     dispatch(dialogListLoading())
     axios
-      .get(url)
+      .post(url, payload)
       .then(response => {
         dispatch(updateDialogList(response.data))
-        console.log(response.data)
       })
       .catch(error => {
         if (error.response) {

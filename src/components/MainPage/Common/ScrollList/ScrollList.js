@@ -2,56 +2,31 @@ import React from 'react';
 import Loading from '../../Common/Loading/Loading'
 import ErrorList from '../../Common/ErrorList/ErrorList'
 
-export class ScrollList extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-
-    componentDidMount() {
-        this.timerID = setInterval( () => this.scrolling(), 1500)
-    }
-
-    scrolling() {
+export default function ScrollList({ list, updatePageNumber, pageNumber, elementView }) {
+    window.onscroll = () => { 
         const element = document.documentElement;
         if(element != null) {
-            if( element.scrollTop + element.clientHeight > element.scrollHeight - (0.2 * element.clientHeight)) {
-                if(!this.props.list.isLoading 
-                    && !this.props.list.errors
-                    && !this.props.list.isAll) {
-                this.props.updatePageNumber(this.props.pageNumber + 1) 
+            if( element.scrollTop + element.clientHeight > element.scrollHeight - (0.05 * element.clientHeight)) {
+                if(!list.isLoading 
+                    && !list.errors
+                    && !list.isAll) {
+                    updatePageNumber() 
                 }
             }
-        }
+        }    
     }
-
-    componentWillUpdate() {
-        
-    }
-
-    componentDidUpdate() {
-
-    }
-  
-    componentWillUnmount() {
-        clearInterval(this.timerID)
-    }
-  
-    render() {
-        const list = this.props.list
-        return (
-            <div className="scrollList">
-                <ul> 
-                    {list.elements.map((element) => 
-                        <li key={element.id.toString()}>
-                            {this.props.elementView(element)}
-                        </li>)
-                    }
-                </ul>
-                <Loading loading={list.isLoading}/>
-                <ErrorList errorList={list.errors}/>    
-            </div>
-        )
-    }
+    return (
+        <div className="scrollList">
+            <ul> 
+                {Array.isArray(list.elements) 
+                    && list.elements.map((element) => 
+                    <li key={element.id.toString()}>
+                        {elementView(element)}
+                    </li>)
+                }
+            </ul>
+            <Loading loading={list.isLoading}/>
+            <ErrorList errorList={list.errors}/>    
+        </div>
+    )
 }
-
-export default ScrollList

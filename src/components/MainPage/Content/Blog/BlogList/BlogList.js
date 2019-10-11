@@ -62,8 +62,7 @@ class BlogList extends React.Component {
                 />
                 <ScrollList 
                     list={this.props.userList}
-                    pageNumber={this.state.pageNumber}
-                    updatePageNumber={(page) => this.updatePageNumber(page)}
+                    updatePageNumber={() => this.updatePageNumber(this.state.pageNumber + 1)}
                     elementView={this.elementView}
                 />
 			</div>

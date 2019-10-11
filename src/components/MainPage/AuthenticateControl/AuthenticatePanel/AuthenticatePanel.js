@@ -46,7 +46,7 @@ class AuthenticatePanel extends React.Component {
             /> 
           }
           <button onClick={this.handleClick}>
-            {this.state.formToggle ? "To Registation" : "To log in"}
+            {this.state.formToggle ? "To registation" : "To log in"}
           </button>
         </div>
         <Loading loading={this.props.loading}/>
