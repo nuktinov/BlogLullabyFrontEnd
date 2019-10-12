@@ -14,7 +14,6 @@ class UserAbout extends React.Component {
     }
 		
     componentDidMount() {
-        console.log(this.props.profile)
         this._isMounted = true;
         const img = new Image(); 
         const setHeight = () => this._isMounted && this.setState({imgProperty: "height"});
@@ -38,10 +37,6 @@ class UserAbout extends React.Component {
             setNotLoadAvatarUrl()
         }
         img.src = this.state.photoUrl;
-    }
-
-    componentDidUpdate(){
-        console.log(this.state.imgProperty)
     }
 
     componentWillUnmount() {
@@ -70,10 +65,8 @@ class UserAbout extends React.Component {
 
 const mapStateToProps = state => {
     return {
-      profile: state.userProfile.profile,
-      loading: state.userProfile.loading,
-      errorList: state.userProfile.errorList
+      profile: state.userProfile.profile
     }
 }
 
-export default connect(mapStateToProps, null)(UserAbout)
+export default connect(mapStateToProps)(UserAbout)

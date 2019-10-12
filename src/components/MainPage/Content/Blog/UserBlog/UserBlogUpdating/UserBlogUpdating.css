@@ -11,13 +11,16 @@
     margin:1px;
 }
 
-.blogUpdating  form, .avatarUpdating {
+.blogUpdating  form, .avatarUpdating, .photoUpdating {
     border-bottom: solid DarkOrchid 1px;
     margin: 1vh 10%;
     padding: 1vh 5%;
     width: 70%;
 }
 
+.photoUpdating {
+    border: none;
+}
 
 .avatarUpdating > div{
     display: flex;
@@ -47,4 +50,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.textFieldsUpdating {
+    width:100%;
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TextInput from '../../../Common/TextInput/TextInput'
 import './FilterPanel.css'
 
-function Filtering({ setFilter, filters }) {
+export default function Filtering({ setFilter }) {
 
     const [criterion, setCriterion] = useState({
         username: '',
@@ -17,36 +17,30 @@ function Filtering({ setFilter, filters }) {
     }
     function change(e) {
         if(e.target.name === "online") 
-            setCriterion({online: !criterion.online})
+            setCriterion({...criterion, online: !criterion.online})
         else
-            setCriterion({ [e.target.name]: e.target.value })
+            setCriterion({...criterion, [e.target.name]: e.target.value })
     }
     let input = document.querySelector('.filtering > .textInput');
     let checkbox = document.querySelector('.filtering > .onlineCheckBox');
     if(input != null && checkbox != null) {
         checkbox.style.width = input.offsetWidth + "px";
     }
+    function inputField(name){
+        return <TextInput
+            span={name + ":"}
+            name={name.toLowerCase()}
+            value={criterion[name.toLowerCase()]}
+            onChange={change}
+        />
+    }
+
     return (
 	    <form className="filtering" onSubmit={submit}>
             <span>Filters</span>
-            <TextInput
-                span="Username:"
-                name="username"
-                value={criterion.username}
-                onChange={change}
-            />
-            <TextInput
-                span="Fullname:"
-                name="fullName"
-                value={criterion.fullName}
-                onChange={change}
-            />
-            <TextInput
-                span="City:"
-                name="city"
-                value={criterion.city}
-                onChange={change}
-            />
+            {inputField("Username")}
+            {inputField("Fullname")}
+            {inputField("City")}
             <span className="onlineCheckBox">
                 Online:
                 <input name="online" type="checkbox" onChange={change}></input>
@@ -55,5 +49,3 @@ function Filtering({ setFilter, filters }) {
         </form>
 	)
 }
-
-export default Filtering;

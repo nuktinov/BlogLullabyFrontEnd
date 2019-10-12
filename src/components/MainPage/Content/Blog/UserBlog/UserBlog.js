@@ -5,7 +5,8 @@ import Loading from '../../../Common/Loading/Loading'
 import ErrorList from '../../../Common/ErrorList/ErrorList'
 import UserProfile from './UserProfile/UserProfile'
 import UserAbout from './UserProfileAbout/UserAbout'
-import { getUserProfileRequest, deleteUserProfileError } from '../../../../../store/userProfile'
+import { getUserProfileRequest, clearUserProfile } from '../../../../../store/userProfile'
+import { clearPostList } from '../../../../../store/postList'
 import './UserBlog.css'
 
 class UserBlog extends React.Component {
@@ -14,24 +15,16 @@ class UserBlog extends React.Component {
     this.state = {
       username: this.props.match.params.username
     };
-  }
-
-  componentWillMount() {
     this.props.getUserProfile(this.state.username);  
   }
   
-  componentDidUpdate() {
-      //if(this.props.authenticationError)
-      //  alert(this.props.authenticationErrorList);
-  }
-  
   componentWillUnmount() {
-      this.props.deleteErrors();
+      this.props.clear();
   }
   
   render() {
     if(this.props.loading)
-      return <Loading loading={this.props.loading}/>
+      return <Loading />
     else if(this.props.errorList)
       return <ErrorList errorList={this.props.errorList}/>
     else if(this.props.profile != null) return (
@@ -40,14 +33,15 @@ class UserBlog extends React.Component {
           <Link to={`/blog/${this.state.username}`}>Blog</Link>
           <Link to={`/blog/${this.state.username}/about`}>About</Link>
           {(this.props.authUsername==this.state.username) 
-            && <Link className="updatingLink" to="/blog/update">Update</Link>}
+            && <Link className="updatingLink" to="/blog/update">Update</Link>
+          }
         </div>
         <Switch>
           <Route exact path={`/blog/:username`} component={UserProfile} />
           <Route path={`/blog/:username/about`} component={UserAbout} />
         </Switch>
       </div>
-    );
+    )
     return null;
   }
 }
@@ -67,8 +61,9 @@ const mapDispatchToProps = dispatch => {
     getUserProfile: (userName) => {
     dispatch(getUserProfileRequest(userName))
     },
-    deleteErrors: () => {
-      dispatch(deleteUserProfileError())
+    clear: () => {
+      dispatch(clearUserProfile())
+      dispatch(clearPostList())
     }
   }
 }

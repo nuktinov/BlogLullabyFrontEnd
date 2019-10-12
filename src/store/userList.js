@@ -9,7 +9,6 @@ const IS_ALL_USERS = 'IS_ALL_USERS'
 
 // action creators
 export function setUserList(payload) {
-  console.log("set")
   return {
     type: UPDATE_USERLIST,
     payload
@@ -17,7 +16,6 @@ export function setUserList(payload) {
 }
 
 export function clearUserList() {
-  console.log("clear")
   return {
     type: CLEAR_USERLIST
   }
@@ -103,6 +101,7 @@ export function userListRequest(criterion) {
         } else if (error.request) {
           dispatch(setUserListError(["Error with request"]));
         } else {
+          dispatch(setUserListError(["Error"]));
           console.log('Error ', error.message);
         }
       })

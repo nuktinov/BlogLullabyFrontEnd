@@ -4,7 +4,9 @@ import TextInfo  from './TextInfo'
 import './UserBlogPreview.css'
 
 export default function UserBlogPreview({ profile }) {
-    const profileInfo = {...profile, firstname: profile.fullName}
+    const profileInfo = profile.fullName 
+        ? {...profile, firstname: profile.fullName} 
+        : profile
     return (  
         <div className="userBlogPreview">
             <Avatar profile={profile} />

@@ -12,19 +12,14 @@ class BlogList extends React.Component {
         super(props);
         this.state = {
             pageNumber: 0,
-            pageSize: 10,
+            pageSize: 2,
             username: '',
             fullName: '',
             city: '',
             online: false     
-      };
-    }
-        
-    componentWillMount() {
+        };
         this.props.getUserList(this.state);
-    }
 
-    componentDidMount() {
     }
 
     componentWillUnmount() {
@@ -32,7 +27,6 @@ class BlogList extends React.Component {
     }
 
     updateCriterion(criterion) {
-        console.log(criterion)
         this.props.clear();
         this.setState({ ...criterion, pageNumber: 0 });
         this.props.getUserList({ ...this.state, ...criterion, pageNumber: 0 });

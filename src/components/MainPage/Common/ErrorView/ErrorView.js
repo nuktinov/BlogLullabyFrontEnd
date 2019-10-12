@@ -1,8 +1,7 @@
 import React from 'react';
 import './ErrorView.css'
 
-export default function ErrorView({ errorList }) {
-
+export default function ErrorView({ errorList, deleteErrors }) {
     function fadeOutEffect() {
         var fadeTarget = document.querySelector(".errorView");
         var fadeEffect = fadeTarget && setInterval(function () {
@@ -13,10 +12,11 @@ export default function ErrorView({ errorList }) {
                 fadeTarget.style.opacity -= 0.05;
             } else {
                 clearInterval(fadeEffect);
+                deleteErrors
+                    && deleteErrors()
             }
         }, 100);
     }
-
     if(errorList) {
         setTimeout(fadeOutEffect, 1000);
         return (
