@@ -15,7 +15,8 @@ class UserProfile extends React.Component {
       filterBy: 1,
       searchText: this.props.match.params.username,
       pageSize: 2,
-      pageNumber: 0
+      pageNumber: 0,
+      exactMatch: true
     };
   }
 

@@ -147,6 +147,7 @@ export function createPostRequest(post) {
     axios
       .post(url, post, config)
       .then(response => {
+        console.log(response.data)
         dispatch(setCreatedPostId(response.data))
       })
       .catch(error => {

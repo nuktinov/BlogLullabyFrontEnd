@@ -4,6 +4,7 @@ import { createPostRequest, clearPost } from '../../../../../store/post'
 import PostBodyCreating from './PostBodyCreating'
 import {Redirect} from 'react-router-dom'
 import InputFileButton from '../../../Common/InputFileButton/InputFileButton'
+import Loading from '../../../Common/Loading/Loading'
 import './PostCreating.css'
 
 class PostCreating extends React.Component {
@@ -92,6 +93,8 @@ class PostCreating extends React.Component {
         <button className="saveBtn" 
           onClick={(e)=>this._upload(e)}>Create
         </button>
+
+        <Loading loading={this.props.loading} />
       </div>
     )
   }
@@ -100,8 +103,8 @@ class PostCreating extends React.Component {
 const mapStateToProps = state => {
   return {
     createdPostId: state.post.createdPostId,
-    errors: state.post.errorList
-    
+    errors: state.post.errorList,
+    loading: state.post.loading
   }
 }
 

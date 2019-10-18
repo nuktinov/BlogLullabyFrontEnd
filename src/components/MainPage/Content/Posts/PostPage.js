@@ -14,7 +14,7 @@ class PostPage extends React.Component {
         sortingBy: 0,
         filterBy: null,
         searchText: '',
-        pageSize: 2,
+        pageSize: 5,
         pageNumber: 0
     };
   }

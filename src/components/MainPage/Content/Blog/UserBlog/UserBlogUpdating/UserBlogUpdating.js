@@ -31,6 +31,11 @@ class UserBlogUpdating extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    this.props.clearUserProfile();
+  }
+
+
   textChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
   }
