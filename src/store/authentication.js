@@ -14,9 +14,10 @@ export function saveAuthenticatedUser(payload) {
   }
 }
 
-export function authenticationLoading() {
+export function authenticationLoading(payload) {
   return {
-    type: AUTHENTICATION_LOADING
+    type: AUTHENTICATION_LOADING,
+    payload
   }
 }
 
@@ -49,10 +50,10 @@ export function clearAuthentication() {
 
 const initialState = {
     logIn: false,
-    error: false,
     errorList: null,
     username: null,
-    success: false
+    success: false,
+    loading: false
 }
 
 export default  function authentication(state = initialState, action) {
@@ -60,11 +61,11 @@ export default  function authentication(state = initialState, action) {
     case SAVE_AUTHENTICATED_USER:
       return { ...state, username: action.payload, logIn: true }
     case AUTHENTICATION_LOADING:
-      return { ...state, loading: !state.loading }
+      return { ...state, loading: action.payload }
     case SET_AUTHENTICATION_ERROR:
-      return { ...state, error: true, errorList: action.payload }
+      return { ...state, errorList: action.payload }
     case DELETE_AUTHENTICATION_ERROR:
-      return { ...state, error: false, errorList: null }
+      return { ...state, errorList: null }
     case SET_AUTHENTICATION_REQUEST_SUCCESS:
       return { ...state, success: true }
     case CLEAR_AUTHENTICATION:
@@ -86,7 +87,7 @@ function updateAuthenticationDatesImplementation(payload, dispatch) {
 export function userLoginRequest(user) {
   return function(dispatch) {
     dispatch(deleteAuthenticationError());
-    dispatch(authenticationLoading());
+    dispatch(authenticationLoading(true));
     axios
       .post(`/authentication/login`, user)
       .then(response => {
@@ -106,7 +107,7 @@ export function userLoginRequest(user) {
         }
       })
       .finally(() => {
-        dispatch(authenticationLoading())
+        dispatch(authenticationLoading(false))
       });
   }
 }
@@ -114,7 +115,7 @@ export function userLoginRequest(user) {
 export function userRegistrationRequest(user) {
   return function(dispatch) {
     dispatch(deleteAuthenticationError());
-    dispatch(authenticationLoading());
+    dispatch(authenticationLoading(true));
     axios
       .post(`/authentication/registration`, user)
       .then(response => {
@@ -133,7 +134,7 @@ export function userRegistrationRequest(user) {
         }
       })
       .finally(() => {
-        dispatch(authenticationLoading())
+        dispatch(authenticationLoading(false))
       });
   }
 }

@@ -4,7 +4,7 @@ import './Loading.css'
 export default function Loading({ loading = true }) {
     if(loading)
         return (
-            <div id="floatingCirclesG">
+            <div id="loading" >
                 <div className="f_circleG" id="frotateG_01"></div>
                 <div className="f_circleG" id="frotateG_02"></div>
                 <div className="f_circleG" id="frotateG_03"></div>

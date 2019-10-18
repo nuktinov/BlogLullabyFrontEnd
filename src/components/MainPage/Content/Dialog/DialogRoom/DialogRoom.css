@@ -1,20 +1,23 @@
-.MessageBar {
+.dialogRoom {
     width: 100%;
-    /*height: 87vh;*/
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
 }
 
-.MessageBar > p, h4 {
+.dialogRoom > p, h4 {
     margin: 1vh;
     margin-bottom: 0;
     font-size: 3vh;
 }
 
 @media all and (max-width: 800px) {
-    .MessageBar {
+    .dialogRoom {
         height: 100%;
     }
+}
+
+.dialogRoom #loading {
+    margin-top: 25%;
 }

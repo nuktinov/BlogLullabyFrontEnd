@@ -4,6 +4,7 @@ import MessageDisplay from './MessageDisplay/MessageDisplay'
 import WritingMessagePanel from './WritingMessagePanel/WritingMessagePanel'
 import Loading from '../../../Common/Loading/Loading'
 import dialogHub from '../../../../../hubs/dialogHub'
+import ErrorView from '../../../Common/ErrorView/ErrorView'
 import './DialogRoom.css'
 
 class DialogRoom extends React.Component {
@@ -53,17 +54,19 @@ class DialogRoom extends React.Component {
     render() {
         const dialog = this.props.dialog
         return (
-            <div className="MessageBar">
+            <div className="dialogRoom">
+                {this.props.errorList &&
+                    <ErrorView errorList={this.props.errorList} />}
                 <p>{dialog.title}</p>
-                {dialog.loading 
-                    ? <Loading />
-                    : <MessageDisplay  
-                        messages={this.props.dialog.messages}
-                        accountUsername={this.props.accountUsername}
-                        loadPreviousMessages={() => this.loadPreviousMessages()}
-                        readMessage={(id) => this.readMessage(id)}
-                    />
-                }
+                {this.props.loading 
+                    && <Loading />}
+                <MessageDisplay  
+                    messages={this.props.dialog.messages}
+                    accountUsername={this.props.accountUsername}
+                    loadPreviousMessages={() => this.loadPreviousMessages()}
+                    readMessage={(id) => this.readMessage(id)}
+                />
+                
                 <WritingMessagePanel sendMessage={(message) => this.sendMessage(message)}/>
             </div>
         );

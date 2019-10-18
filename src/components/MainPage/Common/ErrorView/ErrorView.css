@@ -1,0 +1,18 @@
+.errorView {
+    position: fixed; 
+    left: 50%;
+    transform: translateX(-50%); 
+    top: 10%;
+    padding: 1vh 3vw;
+    background: rgba(248, 2, 2, 0.5);
+    border-radius: 10px;
+    font-family: "Century Gothic";
+    font-size: 3vh;
+    color: white;
+}
+
+@media all and (max-width: 800px) {
+    .errorView {
+        top: 15%;
+    }
+}

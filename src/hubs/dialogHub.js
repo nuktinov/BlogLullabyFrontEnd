@@ -6,13 +6,13 @@ const signalR = require("@aspnet/signalr")
 const { dispatch } = store
 
 const { setDialog, clearDialog, addMessage, setDialogError, 
-    dialogLoading, addPreviousMessages, readMessage} = 
+    dialogLoading, addPreviousMessages, readMessage, deleteDialogError} = 
     bindActionCreators(actions, dispatch)
 
 export default class dialogHub {
 
     constructor() {
-        let hubUrl = 'https://localhost:44307/api/chat';
+        let hubUrl = `${process.env.REACT_APP_API_URL}/chat`;
         this.hubConnection = new signalR.HubConnectionBuilder()
             .withUrl(hubUrl, { accessTokenFactory: () => `${localStorage.getItem('token')}`})
             .configureLogging(signalR.LogLevel.Information)
@@ -27,9 +27,11 @@ export default class dialogHub {
             .then(() => {
                 this.hubConnection
                     .invoke("ConnectToDialogue", this.dialogId)
-                    .then(() => console.log('Connection to dialogue'))
             })
-            .catch(err => console.log('Error while establishing connection: '));
+            .catch(err => {
+                dialogLoading()
+                setDialogError(["Error."])
+            });
 
         this.hubConnection.on("GetDialog", function (data) {
             setDialog(data)
@@ -38,6 +40,7 @@ export default class dialogHub {
 
         this.hubConnection.on("LoadPreviousMessages", function (data) {
             addPreviousMessages(data);
+            dialogLoading()
         })
 
         this.hubConnection.on("ReceiveMessage", function (data) {
@@ -53,11 +56,8 @@ export default class dialogHub {
     readMessage(messageId) {
         return this.hubConnection
             .invoke("ReadMessage", messageId, this.dialogId)
-            .then(() => {
-                console.log("read mess request")
-            })
             .catch(err => {
-                console.error(err)
+                console.log(err)
                 return false;
             });
     }
@@ -69,20 +69,18 @@ export default class dialogHub {
                 return true;
             })
             .catch(err => {
-                console.error(err)
+                setDialogError(["Message not send."])
+                setTimeout(deleteDialogError, 5000);
                 return false;
             });
     }
 
     loadPreviousMessages(requestNumber){
-        dialogLoading()
         this.hubConnection
             .invoke("LoadPreviousMessages", this.dialogId, requestNumber)
             .catch(err => {
-                console.error(err)
-            })
-            .finally(() => {
-                dialogLoading()
+                setDialogError(["Cant load previous messages"])
+                setTimeout(deleteDialogError, 5000);
             })
     }
 

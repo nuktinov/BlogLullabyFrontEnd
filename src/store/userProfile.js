@@ -37,7 +37,6 @@ export function userProfileLoading() {
 }
 
 export function setUserProfileError(payload) {
-  console.log(payload)
   return {
     type: SET_USERPROFILE_ERROR,
     payload
@@ -86,7 +85,6 @@ export function getUserProfileRequest(name) {
     axios
       .get(`/userprofile/${name}`)
       .then(response => {
-	  console.log(response.data)
         dispatch(setUserProfile(response.data))
       })
       .catch(error => {
@@ -98,6 +96,7 @@ export function getUserProfileRequest(name) {
         } else if (error.request) {
           dispatch(setUserProfileError(["Error with requesting"]))
         } else {
+          dispatch(setUserProfileError(["Error"]))
           console.log('Error ', error.message);
         }
       })
@@ -123,8 +122,9 @@ export function updateProfileTextFieldsRequest(profile) {
           else
             dispatch(setUserProfileError([error.response.statusText]));
         } else if (error.request) {
-          console.log(error.request);
+          dispatch(setUserProfileError(["Error with requesting"]))
         } else {
+          dispatch(setUserProfileError(["Error"]))
           console.log('Error ', error.message);
         }
       })
@@ -158,8 +158,9 @@ export function updateProfileImagesRequest(file, image) {
           else
             dispatch(setUserProfileError([error.response.statusText]));
         } else if (error.request) {
-          console.log(error.request);
+          dispatch(setUserProfileError(["Error with requesting"]))
         } else {
+          dispatch(setUserProfileError(["Error"]))
           console.log('Error ', error.message);
         }
       })
@@ -180,15 +181,15 @@ export function changeUsernameRequest(username) {
         dispatch(updateUserProfileExecutingSuccess())
       })
       .catch(error => {
-			console.log(error)
         if (error.response) {
           if(errorListTypeChecking(error.response.data))
             dispatch(setUserProfileError(error.response.data));
           else
             dispatch(setUserProfileError([error.response.statusText]));
         } else if (error.request) {
-          console.log(error.request);
+          dispatch(setUserProfileError(["Error with requesting"]))
         } else {
+          dispatch(setUserProfileError(["Error"]))
           console.log('Error ', error.message);
         }
       })

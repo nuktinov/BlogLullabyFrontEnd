@@ -3,7 +3,7 @@ import Message from '../../Message/Message'
 import checkVisible from '../../../../../../logicElements/checkVisible'
 import './MessageDisplay.css'
 
-class MessageDisplay extends React.Component {
+export default class MessageDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.scrollingDown = true;
@@ -89,5 +89,3 @@ class MessageDisplay extends React.Component {
         );
     }
 }
-
-export default MessageDisplay

@@ -1,13 +1,12 @@
-import axios from 'axios'
-import errorListTypeChecking from '../../logicElements/errorListTypeChecking'
 const SET_DIALOG = 'SET_DIALOG'
 const CLEAR_DIALOG = 'CLEAR_DIALOG'
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const ADD_PREVIOUS_MESSAGES = 'ADD_PREVIOUS_MESSAGES'
-const DIALOG_LOADING = 'DIALOG_LOADING'//
-const SET_DIALOG_ERROR = 'SET_DIALOG_ERROR'//
-const DELETE_DIALOG_ERROR = 'DELETE_DIALOG_ERROR'//
+const DIALOG_LOADING = 'DIALOG_LOADING'
+const SET_DIALOG_ERROR = 'SET_DIALOG_ERROR'
+const DELETE_DIALOG_ERROR = 'DELETE_DIALOG_ERROR'
 const READ_MESSAGE = 'READ_MESSAGE'
+
 // action creators
 export function setDialog(payload) {
   return {
@@ -113,85 +112,3 @@ export default  function dialog(state = initialState, action) {
       return state
   }
 }
-
-///thunk 
-/*
-export function sendMessageRequest(payload) {
-  return function(dispatch) {
-    dispatch(dialogLoading())
-    axios
-      .post(`/message/sendmessage`, payload)
-      .then(response => {
-        dispatch(setDialogSuccess())
-      })
-      .catch(error => {
-        if (error.response) {
-          if(errorListTypeChecking(error.response.data))
-            dispatch(setDialogError(error.response.data));
-          else
-            dispatch(setDialogError([error.response.statusText]));
-        } else if (error.request) {
-          dispatch(setDialogError(["Error with requesting"]))
-        } else {
-          console.log('Error ', error.message);
-        }
-      })
-      .finally(() => {
-        dispatch(dialogLoading())
-      });
-  }
-}
-
-export function getDialogRequest(id) {
-  return function(dispatch) {
-    dispatch(dialogLoading())
-    axios
-      .get(`/dialog/${id}`)
-      .then(response => {
-        dispatch(setDialog(response.data))
-      })
-      .catch(error => {
-        if (error.response) {
-          console.log(error.response);
-          if(errorListTypeChecking(error.response.data))
-            dispatch(setDialogError(error.response.data));
-          else
-            dispatch(setDialogError([error.response.statusText]));
-        } else if (error.request) {
-          dispatch(setDialogError(["Error with requesting"]))
-        } else {
-          console.log('Error ', error.message);
-        }
-      })
-      .finally(() => {
-        dispatch(dialogLoading())
-      });
-  }
-}
-
-export function readMessageRequest(id) {
-  return function(dispatch) {
-    dispatch(dialogLoading())
-    axios
-      .put(`/message/${id}`)
-      .then(response => {
-        dispatch(setDialogSuccess())
-        console.log("запрос")
-      })
-      .catch(error => {
-        if (error.response) {
-          if(errorListTypeChecking(error.response.data))
-            dispatch(setDialogError(error.response.data));
-          else
-            dispatch(setDialogError([error.response.statusText]));
-        } else if (error.request) {
-          dispatch(setDialogError(["Error with requesting"]))
-        } else {
-          console.log('Error ', error.message);
-        }
-      })
-      .finally(() => {
-        dispatch(dialogLoading())
-      });
-  }
-}*/

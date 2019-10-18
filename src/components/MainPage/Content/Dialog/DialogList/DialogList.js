@@ -1,38 +1,35 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-
 import { connect } from 'react-redux'
 import { getDialogListRequest, clearDialogList } from '../../../../../store/dialog/dialogList'
 import DialogPreview from './DialogPreview';
-import Loading from '../../../Common/Loading/Loading'
-import ErrorList from '../../../Common/ErrorList/ErrorList'
+import ScrollList from '../../../Common/ScrollList/ScrollList'
 import './DialogList.css'
 
 export class DialogList extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-      };
-	  this.createDialog = this.createDialog.bind(this);
-    }
-	
-	createDialog(event) {
-		this.props.textSubmit(this.state);
-		event.preventDefault();
-	}
-	
-	crit = {
         pageNumber: 0,
         PageSize: 10
+      };
     }
-		
+        
+    updateDialogList() {
+        if(this.props.dialogList.pageCount == this.state.pageNumber + 1)
+            return;
+        const newState = {
+            ...this.state,
+            pageNumber: this.state.pageNumber + 1
+        }
+        this.props.getDialogList(newState)
+        this.setState(newState)
+    }
+
     componentDidMount() {
-        this.props.getDialogList(this.crit);
+        this.props.getDialogList(this.state);
     }
-	
-	componentWillUpdate() {
-    }
-  
+    
     componentWillUnmount() {
       this.props.clearDialogList()
     }
@@ -41,17 +38,11 @@ export class DialogList extends React.Component {
         return (
 			<div className='dialogList'>
 			    <Link to={`/dialog/create`}>Create</Link>
-                {this.props.loading ? <Loading loading={this.props.loading} /> : (
-                    this.props.errorList ? <ErrorList errorList={this.props.errorList}/> : (
-                        <ul> 
-                            <span>PageCount: {this.props.pageCount}</span>
-                            {this.props.dialogs.map((dialog) => 
-                                <li key={dialog.id.toString()}>
-                                    <DialogPreview dialog={dialog}/>
-                                </li>)}
-                        </ul>
-                    )
-                )}
+                <ScrollList 
+                    list={this.props.dialogList}
+                    updatePageNumber={() => this.updateDialogList()}
+                    elementView={(item) => <DialogPreview dialog={item}/>}
+                />
 			</div>
 		)
     }
@@ -59,19 +50,14 @@ export class DialogList extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getDialogList: (payload) => {
-        dispatch(getDialogListRequest(payload))
-        },
+        getDialogList: (payload) => {dispatch(getDialogListRequest(payload))},
 		clearDialogList: () =>{dispatch(clearDialogList())}
     }
 }
 
 const mapStateToProps = state => {
     return {
-      dialogs: state.dialogList.dialogs,
-	  loading: state.dialogList.loading,
-      errorList: state.dialogList.errorList,
-      pageCount: state.dialogList.pageCount
+      dialogList: state.dialogList,
     }
 }
 

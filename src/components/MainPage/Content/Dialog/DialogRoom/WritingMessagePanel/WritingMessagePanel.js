@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import TextArea from '../../../../Common/TextArea/TextArea'
 import './WritingMessagePanel.css'
-function WritingMessagePanel({ sendMessage }) {
+export default function WritingMessagePanel({ sendMessage }) {
     const [message, setMessage] = useState('');
     function onChange(e) {
         e.preventDefault();
@@ -23,12 +23,10 @@ function WritingMessagePanel({ sendMessage }) {
                     name="name"
                     value={message}
                     onChange={onChange}
-                    maxHeight="30vh"
+                    maxHeight="40vh"
                 />
             </label>
             <input type="submit" value="Send" />
         </form>
-		)
+	)
 }
-
-export default WritingMessagePanel;

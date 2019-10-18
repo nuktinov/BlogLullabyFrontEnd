@@ -14,7 +14,7 @@ class PostPage extends React.Component {
         sortingBy: 0,
         filterBy: null,
         searchText: '',
-        pageSize: 2,
+        pageSize: 5,
         pageNumber: 0
     };
   }
@@ -58,13 +58,11 @@ class PostPage extends React.Component {
           }
         </div>
         <div className='postPageTape'>
-
-        <ScrollList 
-          list={this.props.postList}
-          pageNumber={this.state.pageNumber}
-          updatePageNumber={(page) => this.updatePaging(page)}
-          elementView={this.elementView}
-        />
+          <ScrollList 
+            list={this.props.postList}
+            updatePageNumber={() => this.updatePaging(this.state.pageNumber + 1)}
+            elementView={this.elementView}
+          />
         </div>
       </div>
     );
