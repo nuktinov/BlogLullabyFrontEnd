@@ -10,7 +10,7 @@ function Message({ message, isAccountMessage }) {
 		if(!message.isRead ) {
 			readStatus = "notRead";
 		}
-		if(!message.sender)
+		if(!message.sender || !message.sender.username)
 			return <SystemMessage message={message} />
     	return (
 			<div className='message'>
