@@ -34,7 +34,7 @@ export default class Avatar extends React.Component {
   }
 
   componentDidUpdate() {
-    if(this.props.profile.avatarUrl != this.state.avatarUrl)
+    if(this.props.profile.avatarUrl !== this.state.avatarUrl)
       this.checkAvatar(this.props.profile.avatarUrl)
   }
 

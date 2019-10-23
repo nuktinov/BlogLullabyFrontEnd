@@ -33,12 +33,12 @@ export default class MessageDisplay extends React.Component {
             this.scrollingDown = false;
             const element = document.documentElement;
             if(Math.floor(element.scrollTop + element.clientHeight) >= (element.scrollHeight - 3) 
-                && this.scrollingDown != true) {
+                && this.scrollingDown !== true) {
                 this.scrollingDown = true
             }
 
             // функционал для сохранения скролла при загрузке предыдущих сообщений
-            if(document.documentElement.scrollTop == 0) {
+            if(document.documentElement.scrollTop === 0) {
                 this.scrollHeightAfterLoading = document.documentElement.scrollHeight;
                 this.messagesCount = this.props.messages.length;
                 this.props.loadPreviousMessages();
@@ -49,9 +49,10 @@ export default class MessageDisplay extends React.Component {
                 date: new Date(1950, 0, 1).toString()
             }
             this.props.messages && 
-            this.props.messages.map((message) => {
+            this.props.messages.forEach(function (message) {
                 let target = document.querySelector(`#mess${message.id}`);
-                checkVisible(target) && !message.isRead && message.sender.username !== this.props.accountUsername
+                checkVisible(target) && !message.isRead 
+                    && message.sender.username !== this.props.accountUsername
                     && new Date(message.date) > new Date(lastMess.date) 
                     && (lastMess = message)
             });
@@ -65,7 +66,7 @@ export default class MessageDisplay extends React.Component {
     }
 
     checkOwner(username){
-        const result = this.props.accountUsername == username ?  true : false;
+        const result = this.props.accountUsername === username ?  true : false;
         return result;
     }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
-import { postListRequest, clearPostList } from '../../../../../../store/postList'
+import { postListRequest } from '../../../../../../store/postList'
 import PostPreview from '../../../../Common/PostPreview/PostPreview'
 import ScrollList from '../../../../Common/ScrollList/ScrollList'
 import UserBlogPreview from '../../UserBlogPreview/UserBlogPreview'

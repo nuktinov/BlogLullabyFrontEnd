@@ -1,10 +1,11 @@
 export default function errorListTypeChecking(list) {
     if(list instanceof Array) {
         let result = true;
-        list.map((error) => {
+
+        list.forEach(function(error) {
             if(typeof(error) !== "string") {
                 result = false;
-                return;
+                return ;
             }
         });
         return result;

@@ -32,7 +32,7 @@ class UserBlog extends React.Component {
         <div className="userBlogLinks">
           <Link to={`/blog/${this.state.username}`}>Blog</Link>
           <Link to={`/blog/${this.state.username}/about`}>About</Link>
-          {(this.props.authUsername==this.state.username) 
+          {(this.props.authUsername === this.state.username) 
             && <Link className="updatingLink" to="/blog/update">Update</Link>
           }
         </div>

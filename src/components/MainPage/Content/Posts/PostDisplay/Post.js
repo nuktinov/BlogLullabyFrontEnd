@@ -20,11 +20,11 @@ class Post extends React.Component {
     const state = this.state.showMainImage;
     if(this.props.postState.post) {
       img.onload = function() {
-        if(state != true)
+        if(state !== true)
           set(true)
       }
       img.onerror = function(){
-        if(state != false)
+        if(state !== false)
           set(false)
       }
       img.src = this.props.postState.post.mainImageUrl;

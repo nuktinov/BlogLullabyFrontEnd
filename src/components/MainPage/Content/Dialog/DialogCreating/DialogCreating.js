@@ -17,7 +17,7 @@ class DialogCreating extends React.Component {
   }
 
   textChange(event){
-    if(event.target.value == '') {
+    if(event.target.value === '') {
       let members = this.state.members;
       members.splice(event.target.name, 1);
       this.setState({members});

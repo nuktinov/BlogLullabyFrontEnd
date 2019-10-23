@@ -29,7 +29,7 @@ class PostCreate extends React.Component {
     )  
 
     imageBlock = (i) => (
-        <img src={this.state.objects[i].previewUrl}/>
+        <img src={this.state.objects[i].previewUrl} alt=""/>
     )
     
     deleteObject(i) {
@@ -92,9 +92,8 @@ class PostCreate extends React.Component {
 
     objectReturner(object, position) {
         return(
-            
-                object.type == 'text' ? this.textBlock(position) :
-                object.type == 'image' && this.imageBlock(position)
+            object.type === 'text' ? this.textBlock(position) :
+            object.type === 'image' && this.imageBlock(position)
         )
     }
   
@@ -102,7 +101,7 @@ class PostCreate extends React.Component {
         return (
             <div className='postBodyCreating'>
                 
-                    {(this.state.objects.length == 0) && this.addingButtons(-1)}
+                    {(this.state.objects.length === 0) && this.addingButtons(-1)}
                     {this.state.objects.map((object, index) => 
                         <div className='contentBlock' key={index.toString()}>
                             <div className='contentContainer'>
