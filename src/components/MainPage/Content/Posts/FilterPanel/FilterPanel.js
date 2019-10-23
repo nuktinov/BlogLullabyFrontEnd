@@ -4,7 +4,7 @@ import Sorting from './Sorting'
 import SearchText from './SearchText'
 import './FilterPanel.css'
 
-function FilterPanel({ sendCriterion }) {
+export default function FilterPanel({ sendCriterion }) {
     const [criterion, setCriterion] = useState({
         sortingBy: 0,
         filterBy: null,
@@ -15,7 +15,6 @@ function FilterPanel({ sendCriterion }) {
         let object = { ...criterion, ...field };
         setCriterion(object);
         sendCriterion(object);
-        console.log(object)
     }
 
     return (
@@ -30,5 +29,3 @@ function FilterPanel({ sendCriterion }) {
 			</div>
 	)
 }
-
-export default FilterPanel;

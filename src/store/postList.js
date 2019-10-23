@@ -16,7 +16,6 @@ export function updatePostList(payload) {
 }
 
 export function clearPostList() {
-  console.log("clear")
   return {
     type: CLEAR_POSTLIST
   }

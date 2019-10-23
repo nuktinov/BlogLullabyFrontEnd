@@ -89,7 +89,6 @@ export function getPostRequest(id) {
       .get(`post/${id}`)
       .then(response => {
         dispatch(setPost(response.data))
-        console.log(response.data)
       })
       .catch(error => {
         if (error.response) {
@@ -98,9 +97,9 @@ export function getPostRequest(id) {
           else
             dispatch(setPostError([error.response.statusText]));
         } else if (error.request) {
-          console.log(error.request);
+          dispatch(setPostError("Error with request"));
         } else {
-          console.log('Error ', error.message);
+          dispatch(setPostError("Error!"));
         }
       })
       .finally(() => {
@@ -124,9 +123,9 @@ export function deletePostRequest(id) {
           else
             dispatch(setPostError([error.response.statusText]));
         } else if (error.request) {
-          console.log(error.request);
+          dispatch(setPostError("Error with request!"));
         } else {
-          console.log('Error ', error.message);
+          dispatch(setPostError("Error!"));
         }
       })
       .finally(() => {
@@ -147,7 +146,6 @@ export function createPostRequest(post) {
     axios
       .post(url, post, config)
       .then(response => {
-        console.log(response.data)
         dispatch(setCreatedPostId(response.data))
       })
       .catch(error => {
@@ -157,9 +155,9 @@ export function createPostRequest(post) {
           else
             dispatch(setPostError([error.response.statusText]));
         } else if (error.request) {
-          console.log(error.request);
+          dispatch(setPostError("Error with request"));
         } else {
-          console.log('Error ', error.message);
+          dispatch(setPostError("Error"));
         }
       })
       .finally(() => {

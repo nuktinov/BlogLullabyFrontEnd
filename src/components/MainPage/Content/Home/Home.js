@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import SiteDescription from './SiteDescription/SiteDescription'
 import { postListRequest, clearPostList } from '../../../../store/postList'
+import "./Home.css"
 
 export class Home extends React.Component {
     constructor(props) {
@@ -28,7 +29,7 @@ export class Home extends React.Component {
   
     render() {
         return (
-            <div className="Home">
+            <div className="home">
                 <SiteDescription />
                 <h3> Popular posts </h3>
                 {//<PostTape postList={this.props.postList}/>

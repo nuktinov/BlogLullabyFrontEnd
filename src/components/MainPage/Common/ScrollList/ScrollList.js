@@ -2,7 +2,7 @@ import React from 'react';
 import Loading from '../../Common/Loading/Loading'
 import ErrorList from '../../Common/ErrorList/ErrorList'
 
-export default function ScrollList({ list, updatePageNumber, pageNumber, elementView }) {
+export default function ScrollList({ list, updatePageNumber, elementView, isDestroyed }) {
     window.onscroll = () => { 
         const element = document.documentElement;
         if(element != null) {
@@ -15,6 +15,7 @@ export default function ScrollList({ list, updatePageNumber, pageNumber, element
             }
         }    
     }
+    
     return (
         <div className="scrollList">
             <ul> 
