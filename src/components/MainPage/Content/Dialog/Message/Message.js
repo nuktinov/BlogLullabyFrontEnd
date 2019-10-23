@@ -2,6 +2,7 @@ import React from "react"
 import UserView from '../../../Common/UserView/UserView'
 import dateFormatter from '../../../../../logicElements/dateFormatter'
 import './Message.css'
+import SystemMessage from "./SystemMessage";
 
 function Message({ message, isAccountMessage }) {
 	if(message) {
@@ -9,6 +10,8 @@ function Message({ message, isAccountMessage }) {
 		if(!message.isRead ) {
 			readStatus = "notRead";
 		}
+		if(!message.sender)
+			return <SystemMessage message={message} />
     	return (
 			<div className='message'>
 				<div className={isAccountMessage ? 'dialogMessageRevers' : 'dialogMessage' }>

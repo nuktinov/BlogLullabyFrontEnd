@@ -4,9 +4,7 @@ import dateFormatter from '../../../../../logicElements/dateFormatter'
 import './Message.css'
 import './MessagePreview.css'
 
-//var a;
-
-function MessagePreview({ message }) {
+export default function MessagePreview({ message }) {
 	if(message) {
 		let className = "";
 		if(!message.isRead) 
@@ -25,6 +23,4 @@ function MessagePreview({ message }) {
 	}
 	return null;
 }
-
-export default MessagePreview;
 

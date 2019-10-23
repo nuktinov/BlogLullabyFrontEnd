@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 65%;
-    min-height: 15%;
+    min-height: 13vh;
     max-height: 50%;
     border-top: solid rgb(107, 73, 107) 1px;
     position: fixed; 

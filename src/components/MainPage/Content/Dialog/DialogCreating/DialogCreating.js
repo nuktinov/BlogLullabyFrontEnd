@@ -62,6 +62,7 @@ class DialogCreating extends React.Component {
           />
 			    {this.state.members.map((value,index) => 
             <TextInput
+              key={index}
               span={`Member ${index + 1}:`}
               name={index}
               value={value}

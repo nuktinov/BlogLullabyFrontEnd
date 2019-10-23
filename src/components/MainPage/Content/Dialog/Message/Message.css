@@ -43,3 +43,9 @@
 #notRead {
     background-color: rgba(206, 37, 74, 0.3);
 }
+
+
+.systemMessage {
+    text-align: center;
+    width: 100%;
+}
