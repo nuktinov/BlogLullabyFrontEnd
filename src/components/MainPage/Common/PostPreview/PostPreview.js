@@ -28,9 +28,6 @@ class PostPreview extends React.Component {
             const height = (this.height * width)/this.width;
             setHeight(`${height - height/100*2.5}px`);
         }
-        img.onerror = function() {
-            //setHeight("8vh");
-        }
         img.src = this.props.post.mainImageUrl;
     }
 

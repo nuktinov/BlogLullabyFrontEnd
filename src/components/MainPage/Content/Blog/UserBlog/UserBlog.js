@@ -24,7 +24,7 @@ class UserBlog extends React.Component {
   
   render() {
     if(this.props.loading)
-      return <Loading />
+      return <Loading pageLoad={true} />
     else if(this.props.errorList)
       return <ErrorList errorList={this.props.errorList}/>
     else if(this.props.profile != null) return (

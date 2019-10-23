@@ -1,10 +1,10 @@
 import React from 'react';
 import './Loading.css'
 
-export default function Loading({ loading = true }) {
+export default function Loading({ loading = true , pageLoad }) {
     if(loading)
         return (
-            <div id="loading" >
+            <div id="loading" className={pageLoad && "pageLoad"} >
                 <div className="f_circleG" id="frotateG_01"></div>
                 <div className="f_circleG" id="frotateG_02"></div>
                 <div className="f_circleG" id="frotateG_03"></div>

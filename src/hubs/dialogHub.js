@@ -21,7 +21,7 @@ export default class dialogHub {
 
     connect(dialogId) {
         this.dialogId = dialogId
-        dialogLoading()
+        dialogLoading(true)
         this.hubConnection
             .start()
             .then(() => {
@@ -29,18 +29,18 @@ export default class dialogHub {
                     .invoke("ConnectToDialogue", this.dialogId)
             })
             .catch(err => {
-                dialogLoading()
+                dialogLoading(false)
                 setDialogError(["Error."])
             });
 
         this.hubConnection.on("GetDialog", function (data) {
             setDialog(data)
-            dialogLoading()
+            dialogLoading(false)
         })    
 
         this.hubConnection.on("LoadPreviousMessages", function (data) {
             addPreviousMessages(data);
-            dialogLoading()
+            dialogLoading(false)
         })
 
         this.hubConnection.on("ReceiveMessage", function (data) {
@@ -76,11 +76,13 @@ export default class dialogHub {
     }
 
     loadPreviousMessages(requestNumber){
+        dialogLoading(true)
         this.hubConnection
             .invoke("LoadPreviousMessages", this.dialogId, requestNumber)
             .catch(err => {
                 setDialogError(["Cant load previous messages"])
                 setTimeout(deleteDialogError, 5000);
+                dialogLoading(false)
             })
     }
 

@@ -8,7 +8,7 @@ import axios from 'axios'
 import store from './store/store'
 
 require('dotenv').config();
-axios.defaults.baseURL = process.env.REACT_APP_API_URL_DEBUG;
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 const rootElement = document.getElementById("root");
 

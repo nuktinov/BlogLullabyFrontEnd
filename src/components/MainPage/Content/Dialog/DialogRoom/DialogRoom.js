@@ -55,13 +55,13 @@ class DialogRoom extends React.Component {
         const dialog = this.props.dialog
         return (
             <div className="dialogRoom">
+                <h4>{dialog.title}</h4>
                 {this.props.errorList &&
                     <ErrorView errorList={this.props.errorList} />}
-                <p>{dialog.title}</p>
                 {this.props.loading 
                     && <Loading />}
                 <MessageDisplay  
-                    messages={this.props.dialog.messages}
+                    messages={dialog.messages}
                     accountUsername={this.props.accountUsername}
                     loadPreviousMessages={() => this.loadPreviousMessages()}
                     readMessage={(id) => this.readMessage(id)}

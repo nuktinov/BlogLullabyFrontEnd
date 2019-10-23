@@ -4,12 +4,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-}
-
-.dialogRoom > p, h4 {
-    margin: 1vh;
-    margin-bottom: 0;
-    font-size: 3vh;
+    padding-top:5vh;
 }
 
 @media all and (max-width: 800px) {
@@ -20,4 +15,13 @@
 
 .dialogRoom #loading {
     margin-top: 25%;
+}
+
+.dialogRoom > h4 {
+    position: fixed;
+    top: 8vh;
+    margin: 1vh 0;
+    width: 65%;
+    background: floralwhite;
+    font-size: 3vh;
 }
