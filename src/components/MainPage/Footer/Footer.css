@@ -6,8 +6,7 @@
     border-top: solid DarkOrchid 1px;
     display: flex;
     flex-direction: column;
-    height: 17vh;
-    min-height: 65px;
+    height: 12vh;
 }
 
 .contact {
@@ -19,17 +18,26 @@
 
 .contact > img {
     display: flex;
-    min-width: 3px;
-    min-height: 3px;
+    min-width: 10px;
+    min-height: 10px;
     padding: 3px;
-    height: 4vh;
-    width: 4vh;
-}
-
-.contact > p {
-    /*margin: 0px;*/
+    height: 3.5vh;
+    width: 3.5vh;
 }
 
 #pageFooter  p {
     margin: 0.5vh 0vw;
+    font-size: 2.5vh;
+}
+
+@media all and (max-width: 800px) {
+    #pageFooter {
+        min-height: 65px;
+        font-size: 30px;
+    }
+
+    #pageFooter  p {
+        font-size: 15px;
+    }
+    
 }
