@@ -12,26 +12,24 @@
 
 .contact {
     display: flex;
-    max-height: 30%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0.5vh 0vw;
 }
 
 .contact > img {
     display: flex;
-    min-width: 5px;
-    min-height: 5px;
+    min-width: 3px;
+    min-height: 3px;
     padding: 3px;
     height: 4vh;
     width: 4vh;
 }
 
 .contact > p {
-    margin: 0px;
+    /*margin: 0px;*/
 }
 
-#pageFooter > p {
+#pageFooter  p {
     margin: 0.5vh 0vw;
 }
