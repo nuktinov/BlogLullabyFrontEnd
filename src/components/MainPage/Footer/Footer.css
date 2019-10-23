@@ -1,7 +1,13 @@
 #pageFooter {
+    grid-area: footer;
+    padding: 0px;
+    background: Ivory;
+    text-align: center;
+    border-top: solid DarkOrchid 1px;
     display: flex;
     flex-direction: column;
-    background: ivory;
+    height: 17vh;
+    min-height: 65px;
 }
 
 .contact {
@@ -10,7 +16,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0px;
+    margin: 0.5vh 0vw;
 }
 
 .contact > img {
@@ -27,6 +33,5 @@
 }
 
 #pageFooter > p {
-    margin: 3px;
-    max-height: 20%;
+    margin: 0.5vh 0vw;
 }
