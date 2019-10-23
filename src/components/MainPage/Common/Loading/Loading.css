@@ -1,5 +1,12 @@
+.pageLoad {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #loading{
-    position:relative;
+    /*position:relative;*/
     width:125px;
     height:125px;
     margin:auto;

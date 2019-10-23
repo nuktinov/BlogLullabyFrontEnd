@@ -6,12 +6,6 @@
     align-items: center;
 }
 
-.dialogRoom > p, h4 {
-    margin: 1vh;
-    margin-bottom: 0;
-    font-size: 3vh;
-}
-
 @media all and (max-width: 800px) {
     .dialogRoom {
         height: 100%;
@@ -20,4 +14,13 @@
 
 .dialogRoom #loading {
     margin-top: 25%;
+}
+
+.dialogRoom > h4 {
+    position: absolute;
+    top: 8vh;
+    margin: 1vh 0;
+    width: 65%;
+    background: floralwhite;
+    font-size: 3vh;
 }
