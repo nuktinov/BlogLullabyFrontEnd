@@ -49,7 +49,7 @@ export default class MessageDisplay extends React.Component {
                 date: new Date(1950, 0, 1).toString()
             }
             this.props.messages && 
-            this.props.messages.forEach(function (message) {
+            this.props.messages.map((message) => {
                 let target = document.querySelector(`#mess${message.id}`);
                 checkVisible(target) && !message.isRead 
                     && message.sender.username !== this.props.accountUsername
