@@ -7,15 +7,6 @@
     padding-top:5vh;
 }
 
-@media all and (max-width: 800px) {
-    .dialogRoom {
-        height: 100%;
-    }
-}
-
-.dialogRoom #loading {
-    margin-top: 25%;
-}
 
 .dialogRoom > h4 {
     position: fixed;
@@ -25,3 +16,17 @@
     background: floralwhite;
     font-size: 3vh;
 }
+
+@media all and (max-width: 800px) {
+    .dialogRoom {
+        height: 100%;
+    }
+    .dialogRoom > h4 {
+        top: 15vh;
+    }
+}
+
+.dialogRoom #loading {
+    margin-top: 25%;
+}
+
