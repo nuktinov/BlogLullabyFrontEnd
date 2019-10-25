@@ -30,9 +30,10 @@ export function clearUserProfile() {
   }
 }
 
-export function userProfileLoading() {
+export function userProfileLoading(payload) {
   return {
-    type: USERPROFILE_LOADING
+    type: USERPROFILE_LOADING,
+    payload
   }
 }
 
@@ -65,7 +66,7 @@ export default  function userProfile(state = initialState, action) {
     case SET_USERPROFILE:
         return { ...state, profile: action.payload }
     case USERPROFILE_LOADING:
-      return { ...state, loading: !state.loading }
+      return { ...state, loading: action.payload }
     case SET_USERPROFILE_ERROR:
       return { ...state, errorList: action.payload }
     case SET_USERPROFILE_SUCCESS:
@@ -81,7 +82,7 @@ export default  function userProfile(state = initialState, action) {
 
 export function getUserProfileRequest(name) {
   return function(dispatch) {
-    dispatch(userProfileLoading())
+    dispatch(userProfileLoading(true))
     axios
       .get(`/userprofile/${name}`)
       .then(response => {
@@ -101,14 +102,14 @@ export function getUserProfileRequest(name) {
         }
       })
       .finally(() => {
-        dispatch(userProfileLoading())
+        dispatch(userProfileLoading(false))
       });
   }
 }
 
 export function updateProfileTextFieldsRequest(profile) {
   return function(dispatch) {
-    dispatch(userProfileLoading())
+    dispatch(userProfileLoading(true))
     axios 
       .put(`/userProfile`, profile)
       .then(response => {
@@ -129,7 +130,7 @@ export function updateProfileTextFieldsRequest(profile) {
         }
       })
       .finally(() => {
-        dispatch(userProfileLoading())
+        dispatch(userProfileLoading(false))
       });
   }
 }
@@ -137,7 +138,7 @@ export function updateProfileTextFieldsRequest(profile) {
 
 export function updateProfileImagesRequest(file, image) {
   return function(dispatch) {
-    dispatch(userProfileLoading())
+    dispatch(userProfileLoading(true))
     const url = `/userProfile/${image}`;
     const formData = new FormData();
     formData.append('body', file);
@@ -165,14 +166,14 @@ export function updateProfileImagesRequest(file, image) {
         }
       })
       .finally(() => {
-        dispatch(userProfileLoading())
+        dispatch(userProfileLoading(false))
       });
   }
 }
 
 export function changeUsernameRequest(username) {
   return function(dispatch) {
-    dispatch(userProfileLoading())
+    dispatch(userProfileLoading(true))
     const url = `/authentication/${username}`;
     axios 
       .put(url)
@@ -194,7 +195,7 @@ export function changeUsernameRequest(username) {
         }
       })
       .finally(() => {
-        dispatch(userProfileLoading())
+        dispatch(userProfileLoading(false))
       });
   }
 }
