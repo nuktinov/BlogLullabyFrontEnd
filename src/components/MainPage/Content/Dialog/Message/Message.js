@@ -6,12 +6,12 @@ import SystemMessage from "./SystemMessage";
 
 function Message({ message, isAccountMessage }) {
 	if(message) {
+		if(message.sender.username === null)
+			return <SystemMessage message={message} />
 		let readStatus = "";
 		if(!message.isRead ) {
 			readStatus = "notRead";
 		}
-		if(!message.sender || !message.sender.username)
-			return <SystemMessage message={message} />
     	return (
 			<div className='message'>
 				<div className={isAccountMessage ? 'dialogMessageRevers' : 'dialogMessage' }>
