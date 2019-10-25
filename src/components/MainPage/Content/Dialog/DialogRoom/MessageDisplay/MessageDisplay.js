@@ -23,7 +23,7 @@ export default class MessageDisplay extends React.Component {
             this.scrollHeightAfterLoading = null;
         }
     }
-    
+
     componentDidMount() {
         window.onscroll = () => { 
             
