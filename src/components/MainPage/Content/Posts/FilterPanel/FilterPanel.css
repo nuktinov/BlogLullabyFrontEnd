@@ -8,17 +8,31 @@
 
 }
 
-.filterPanel label {
-    flex-direction: row;
-    margin: 1px;
+.filterPanel input[type=submit] {
+    width: 50%;
 }
 
-.filterPanel form {
+.filterPanel input[type=text] {
+    width: 35%;
+}
+
+.filterPanel label {
+    flex-direction: row;
+    margin: 0.8vh 1vw;
+    
+}
+
+.filterPanel {
     display: flex;
-    margin: 0 4px;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     font-size: 2.5vh;
+    width: 80%;
+    margin: 2vh auto;
+    
+    border: solid rgb(111, 38, 148);
+    border-width: 1px 0;
+    border-radius: 5px;
 }
 
 select {
@@ -29,3 +43,4 @@ select {
 .filterPanel input {
     margin: 0 0.5vw;
 }
+

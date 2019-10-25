@@ -12,7 +12,7 @@ const { setDialog, clearDialog, addMessage, setDialogError,
 export default class dialogHub {
 
     constructor() {
-        let hubUrl = `${process.env.REACT_APP_API_URL}/chat`;
+        let hubUrl = `${process.env.REACT_APP_API_URL_DEBUG}/chat`;
         this.hubConnection = new signalR.HubConnectionBuilder()
             .withUrl(hubUrl, { accessTokenFactory: () => `${localStorage.getItem('token')}`})
             .configureLogging(signalR.LogLevel.Information)

@@ -4,6 +4,11 @@
     width: 90%;
     border-bottom: 1px  solid rgb(135, 83, 161);
     margin: auto;
+    padding-top: 1vh;
+}
+
+.userBlogPreview .avatar{
+    margin: auto 0;
 }
 .textInfo {
     display: flex;
@@ -26,4 +31,14 @@
 
 .textInfo > :last-child{
     align-self: flex-end;
+}
+
+
+@media all and (max-width: 800px) {
+    .textInfo > :first-child{
+        font-size: 4vw;
+    }
+    .textInfo > span {
+        font-size: 3vw;
+    }
 }
