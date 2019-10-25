@@ -4,8 +4,6 @@
     background: Ivory;
     text-align: center;
     border-top: solid DarkOrchid 1px;
-    display: flex;
-    flex-direction: column;
 }
 
 .contact {

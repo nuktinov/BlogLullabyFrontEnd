@@ -65,6 +65,7 @@
 
     #navBar {
         left: 0; top: 8.5%; right: 0px;
+        min-height: 3.5vh;
         height: 6.5%;
         width: auto;
         display: flex;
