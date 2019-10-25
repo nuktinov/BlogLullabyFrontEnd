@@ -20,10 +20,6 @@ class PostPage extends React.Component {
     this.props.updatePostList(this.state);
   }
 
-  componentDidMount(){
-    document.documentElement.scrollTop = 0;
-  }
-
   componentWillUnmount() { 
     this.props.clearPostList();   
     window.onscroll = null;
