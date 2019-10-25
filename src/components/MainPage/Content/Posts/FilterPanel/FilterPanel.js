@@ -1,10 +1,8 @@
 import React, { useState } from "react"
-import Filtering from './Filtering'
-import Sorting from './Sorting'
-import SearchText from './SearchText'
+import { Link } from 'react-router-dom'
 import './FilterPanel.css'
 
-export default function FilterPanel({ sendCriterion }) {
+export default function FilterPanel({ sendCriterion, logIn }) {
     const [criterion, setCriterion] = useState({
         sortingBy: 0,
         filterBy: null,
@@ -53,17 +51,12 @@ export default function FilterPanel({ sendCriterion }) {
                 </label>
             }
             <input type="submit" value="Search" className="saveBtn"/>
+
+            {logIn && 
+                <Link to={`/post/create`}>
+                    Create
+                </Link>
+            }
         </form>
 	)
 }
-
-
-/*
-<Sorting setSorting={(field) => changing(field)}/>
-                <Filtering setFiltering={(field) => changing(field)} />
-                {criterion.filterBy && 
-                <SearchText 
-                    setSearchText={(field) => changing(field)}
-                    searchText={criterion.searchText}
-                />}
-                */

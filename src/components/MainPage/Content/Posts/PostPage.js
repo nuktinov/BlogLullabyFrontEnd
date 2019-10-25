@@ -48,12 +48,11 @@ class PostPage extends React.Component {
     return (
       <div className='postPage'>   
         <div className='postPageControlPanel'>     
-          <FilterPanel sendCriterion={(criterion) => {this.updateCriterions(criterion)} }/>
-          {this.props.logIn && 
-            <Link to={`/post/create`}>
-              Create
-            </Link>
-          }
+          <FilterPanel 
+            sendCriterion={(criterion) => {this.updateCriterions(criterion)} }
+            logIn={this.props.logIn}
+          />
+          
         </div>
         <div className='postPageTape'>
           <ScrollList 
