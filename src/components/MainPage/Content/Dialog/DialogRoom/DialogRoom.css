@@ -4,11 +4,16 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    padding-top:5vh;
 }
 
-.dialogRoom > p, h4 {
-    margin: 1vh;
-    margin-bottom: 0;
+
+.dialogRoom > h4 {
+    position: fixed;
+    top: 8vh;
+    margin: 1vh 0;
+    width: 65%;
+    background: floralwhite;
     font-size: 3vh;
 }
 
@@ -16,8 +21,7 @@
     .dialogRoom {
         height: 100%;
     }
-}
-
-.dialogRoom #loading {
-    margin-top: 25%;
+    .dialogRoom > h4 {
+        top: 15vh;
+    }
 }

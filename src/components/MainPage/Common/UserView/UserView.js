@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Redirect, Link } from 'react-router-dom'
+import React from "react"
+import { Link } from 'react-router-dom'
 import checkOnline from '../../../../logicElements/checkOnline'
 import './UserView.css'
 
@@ -15,7 +15,7 @@ class UserView extends React.Component {
     }
 		
     componentDidMount() {
-        if(this.props.showName != undefined)
+        if(this.props.showName !== undefined)
             this.setState({showName: this.props.showName});
         this._isMounted = true;
         const img = new Image(); 
@@ -26,7 +26,7 @@ class UserView extends React.Component {
                 setWidth();   
         }
         img.onerror = function(){
-             setAvatarUrl()
+            setAvatarUrl()
         }
         img.src = this.props.userView.avatarUrl;       
     }
@@ -37,16 +37,16 @@ class UserView extends React.Component {
 	
     render() {
         return (
-        <div className='userView'>
-            <Link  to={`/blog/${this.props.userView.username}`} className={ `${checkOnline(this.props.userView.lastVisit)}`}>  
-                <img 
-                    src={this.state.avatarUrl}
-                    alt={this.props.userView.username} 
-                    style={{[this.state.property]:"100%"}}
-                />
-            </Link>
-            {this.state.showName && <p>{this.props.userView.username} </p>}
-        </div>
+            <div className='userView'>
+                <Link  to={`/blog/${this.props.userView.username}`} className={ `${checkOnline(this.props.userView.lastVisit)}`}>  
+                    <img 
+                        src={this.state.avatarUrl}
+                        alt={this.props.userView.username} 
+                        style={{[this.state.property]:"100%"}}
+                    />
+                </Link>
+                {this.state.showName && <p>{this.props.userView.username} </p>}
+            </div>
         )
     }
 }

@@ -1,32 +1,43 @@
 #pageFooter {
+    grid-area: footer;
+    padding: 0px;
+    background: Ivory;
+    text-align: center;
+    border-top: solid DarkOrchid 1px;
     display: flex;
     flex-direction: column;
-    background: ivory;
+    height: 12vh;
 }
 
 .contact {
     display: flex;
-    max-height: 30%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0px;
 }
 
 .contact > img {
     display: flex;
-    min-width: 5px;
-    min-height: 5px;
+    min-width: 10px;
+    min-height: 10px;
     padding: 3px;
-    height: 4vh;
-    width: 4vh;
+    height: 3.5vh;
+    width: 3.5vh;
 }
 
-.contact > p {
-    margin: 0px;
+#pageFooter  p {
+    margin: 0.5vh 0vw;
+    font-size: 2.5vh;
 }
 
-#pageFooter > p {
-    margin: 3px;
-    max-height: 20%;
+@media all and (max-width: 800px) {
+    #pageFooter {
+        min-height: 65px;
+        font-size: 30px;
+    }
+
+    #pageFooter  p {
+        font-size: 15px;
+    }
+    
 }

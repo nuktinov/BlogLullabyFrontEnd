@@ -4,6 +4,7 @@
     font-family: "Century Gothic";
     color: DarkOrchid;
     padding-left: 8%;
+    word-wrap: normal;
 }
 
 #navBar a:hover { 
@@ -39,8 +40,9 @@
     }
 
     #navBar a {
-        width: 80%;
+        font-size: 100%;
         padding-bottom: 3%;
         text-align: center;
+        padding-left: 0;
     }
 }

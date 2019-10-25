@@ -8,7 +8,8 @@ class PostPreview extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-          height: 40
+          height: "8vh",
+          imageUrl: null
       }
       this._isMounted = false;
     }
@@ -16,11 +17,16 @@ class PostPreview extends React.Component {
     componentDidMount() {
         this._isMounted = true;
         const img = new Image(); 
-        const setHeight = (height) => this._isMounted && this.setState({ height });
+        const setHeight = (height) => this._isMounted && 
+            this.setState({ 
+                height, 
+                imageUrl: `url(${this.props.post.mainImageUrl})`
+            });
+        
         const width = document.querySelector('.preview').offsetWidth;
         img.onload = function() {
             const height = (this.height * width)/this.width;
-            setHeight(height - height/100*2.5);
+            setHeight(`${height - height/100*2.5}px`);
         }
         img.src = this.props.post.mainImageUrl;
     }
@@ -39,13 +45,15 @@ class PostPreview extends React.Component {
                     />
                     <Link to={`/post/${post.id}`} >
                         <div className="preview" 
-                        style={{ 
-                            backgroundImage: `url(${post.mainImageUrl})`,
-                            height: `${this.state.height}px`,
-                            maxHeight: "500px",
-                        }}>
+                            style={{ 
+                                backgroundImage: this.state.imageUrl,
+                                height: this.state.height,
+                                maxHeight: "500px",
+                            }}>
                             <div>
-                                <span>{post.title}</span>
+                                {post.title &&
+                                    <span>{post.title}</span>
+                                }
                             </div>
                         </div>
                     </Link>

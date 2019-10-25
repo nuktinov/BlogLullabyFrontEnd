@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import ImageUpdating from './ImageUpdating'
 import TextFieldsUpdating from './TextFieldsUpdating'

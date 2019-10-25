@@ -17,7 +17,7 @@ class DialogCreating extends React.Component {
   }
 
   textChange(event){
-    if(event.target.value == '') {
+    if(event.target.value === '') {
       let members = this.state.members;
       members.splice(event.target.name, 1);
       this.setState({members});
@@ -62,6 +62,7 @@ class DialogCreating extends React.Component {
           />
 			    {this.state.members.map((value,index) => 
             <TextInput
+              key={index}
               span={`Member ${index + 1}:`}
               name={index}
               value={value}

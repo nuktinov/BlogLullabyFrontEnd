@@ -10,6 +10,13 @@
     height: 30vh;
     margin: 2vh;
 }
+
+@media all and (max-width: 400px) {
+    .avatar {
+        width: 30vw;
+        height: 30vw;
+    }
+}
   
 .avatar > img {
     display: block;

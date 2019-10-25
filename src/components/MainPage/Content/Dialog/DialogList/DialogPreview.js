@@ -8,7 +8,7 @@ function DialogPreview ({ dialog }) {
             <Link to={`/dialog/${dialog.id}`}>
 			    <h5>{dialog.title}</h5>
             </Link>
-			<MessagePreview message={dialog.lastMessage} style='messagePreview'/>
+			<MessagePreview message={dialog.lastMessage} />
 		</div>
     )
 };

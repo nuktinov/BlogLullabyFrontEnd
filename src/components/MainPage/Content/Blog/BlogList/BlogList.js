@@ -19,7 +19,6 @@ class BlogList extends React.Component {
             online: false     
         };
         this.props.getUserList(this.state);
-
     }
 
     componentWillUnmount() {

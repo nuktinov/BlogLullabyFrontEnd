@@ -16,7 +16,7 @@ export class DialogList extends React.Component {
     }
         
     updateDialogList() {
-        if(this.props.dialogList.pageCount == this.state.pageNumber + 1)
+        if(this.props.dialogList.pageCount === this.state.pageNumber + 1)
             return;
         const newState = {
             ...this.state,

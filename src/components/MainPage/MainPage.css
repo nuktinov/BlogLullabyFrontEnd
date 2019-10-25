@@ -4,7 +4,7 @@
     "header header header"
     "nav pageContent ads"
     "footer footer footer";
-    grid-template-rows: 8% 1fr 15%;
+    grid-template-rows: 8vh 1fr 13vh;
     grid-template-columns: 18% 65% 17%;
     grid-gap: 0%;
     height: 100vh;
@@ -14,7 +14,7 @@
 }
 
 #pageHeader {
-    height: 8%;
+    height: 8vh;
     text-align: center;
     margin: 0px 0px;
     position: fixed; 
@@ -113,7 +113,6 @@ select {
 time {
     white-space: nowrap;
 }
-
 
 input[type=submit] {
     background: rgb(153, 50, 204, 0.2);

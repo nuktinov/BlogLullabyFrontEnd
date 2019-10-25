@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { connect } from 'react-redux'
 import { logOut } from '../../../../store/authentication'
 import '../AuthenticateControl.css'
@@ -6,7 +6,7 @@ import '../AuthenticateControl.css'
 function LogOutButton ({ logOut, setRedirect }) {
     const element = document.querySelector('#authenticateControl');
     if(element != null)
-        element.style.height = "8%";
+        element.style.height = "8vh";
     function handleClick() {
         logOut();
         setRedirect();

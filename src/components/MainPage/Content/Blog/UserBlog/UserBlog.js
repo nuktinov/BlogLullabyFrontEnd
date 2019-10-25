@@ -24,7 +24,7 @@ class UserBlog extends React.Component {
   
   render() {
     if(this.props.loading)
-      return <Loading />
+      return <Loading pageLoad={true} />
     else if(this.props.errorList)
       return <ErrorList errorList={this.props.errorList}/>
     else if(this.props.profile != null) return (
@@ -32,7 +32,7 @@ class UserBlog extends React.Component {
         <div className="userBlogLinks">
           <Link to={`/blog/${this.state.username}`}>Blog</Link>
           <Link to={`/blog/${this.state.username}/about`}>About</Link>
-          {(this.props.authUsername==this.state.username) 
+          {(this.props.authUsername === this.state.username) 
             && <Link className="updatingLink" to="/blog/update">Update</Link>
           }
         </div>

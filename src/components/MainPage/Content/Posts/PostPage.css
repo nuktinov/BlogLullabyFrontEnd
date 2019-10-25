@@ -15,20 +15,16 @@
 .postPageControlPanel a {
     margin: 2%;
     width: 12%;
-    height: 4vh;
     color: DarkOrchid;
-    font-size: 2.5vh;
-    padding-top: 1%;
+    font-size: 2vw;
+    padding: 1vh 1vw;
+    margin: auto 1vw;
 }
 
 .postPageControlPanel a:hover {
-    margin: 2%;
-    width: 12%;
-    height: 4vh;
     color: Ivory;
     background: rgb(135, 83, 161);
     opacity: 1;
-
 }
 
 .postPageTape {

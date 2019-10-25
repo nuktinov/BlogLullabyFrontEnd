@@ -8,15 +8,31 @@ import './PostDisplay.css'
 class Post extends React.Component {
   constructor(props) {
     super(props);
- 
+    this.props.getPostRequest(this.props.match.params.id);
+    this.state = {
+      showMainImage: false
+    }
   }
 
-  componentWillMount() {
-    this.props.getPostRequest(this.props.match.params.id);
+  componentDidUpdate() {
+    const img = new Image(); 
+    const set = (showMainImage) => this.setState({ showMainImage });
+    const state = this.state.showMainImage;
+    if(this.props.postState.post) {
+      img.onload = function() {
+        if(state !== true)
+          set(true)
+      }
+      img.onerror = function(){
+        if(state !== false)
+          set(false)
+      }
+      img.src = this.props.postState.post.mainImageUrl;
+    }
   }
 
   componentWillUnmount() { 
-    //this.props.clearPostList();   
+    this.props.clear();   
   }
 
   render() {
@@ -28,10 +44,11 @@ class Post extends React.Component {
           <div className="PostDisplay">
             <UserView userView={post.author}/>
             <h2>{post.title}</h2>
-            <img 
+            {this.state.showMainImage && 
+              <img 
               src={post.mainImageUrl}
               alt={post.title}
-            />
+              />}
             {post.bodyBlocks == null ? null : post.bodyBlocks.map((block, index) => block.blockType=='text' 
               ? (<p key={index}> {block.content} </p>)
               : (<img key={index} src={block.content} />))
@@ -53,8 +70,8 @@ class Post extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-        getPostRequest: (payload) => dispatch(getPostRequest(payload)),
-      //clearPostList:() => {dispatch(clearPostList())}
+    getPostRequest: (payload) => dispatch(getPostRequest(payload)),
+    clear:() => {dispatch(clearPost())}
   }
 }
 

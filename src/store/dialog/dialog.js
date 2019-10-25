@@ -35,9 +35,10 @@ export function addPreviousMessages(payload) {
   }
 }
 
-export function dialogLoading() {
+export function dialogLoading(payload) {
   return {
-    type: DIALOG_LOADING
+    type: DIALOG_LOADING,
+    payload
   }
 }
 
@@ -91,7 +92,7 @@ export default  function dialog(state = initialState, action) {
         IsAllMessagesLoading: action.payload.length == 0 ? true : false
       }
     case DIALOG_LOADING:
-      return { ...state, loading: !state.loading }
+      return { ...state, loading: action.payload }
     case SET_DIALOG_ERROR:
       return { ...state, error: true, errorList: action.payload }
     case DELETE_DIALOG_ERROR:

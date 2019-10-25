@@ -11,15 +11,12 @@ class PostPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        sortingBy: 0,
-        filterBy: null,
-        searchText: '',
-        pageSize: 5,
-        pageNumber: 0
+      sortingBy: 0,
+      filterBy: null,
+      searchText: '',
+      pageSize: 5,
+      pageNumber: 0
     };
-  }
-
-  componentDidMount() {
     this.props.updatePostList(this.state);
   }
 
@@ -29,6 +26,7 @@ class PostPage extends React.Component {
 
   componentWillUnmount() { 
     this.props.clearPostList();   
+    window.onscroll = null;
   }
 
   updateCriterions(criterion) {

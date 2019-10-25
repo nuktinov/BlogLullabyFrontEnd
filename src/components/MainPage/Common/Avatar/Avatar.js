@@ -2,7 +2,7 @@ import React from 'react';
 import checkOnline from '../../../../logicElements/checkOnline'
 import './Avatar.css'
 
-class Avatar extends React.Component {
+export default class Avatar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +34,7 @@ class Avatar extends React.Component {
   }
 
   componentDidUpdate() {
-    if(this.props.profile.avatarUrl != this.state.avatarUrl)
+    if(this.props.profile.avatarUrl !== this.state.avatarUrl)
       this.checkAvatar(this.props.profile.avatarUrl)
   }
 
@@ -42,18 +42,17 @@ class Avatar extends React.Component {
     this._isMounted = false;
   }
     
-    render() {
-      const profile = this.props.profile;
-        return (
-            <div className={`avatar ${checkOnline(profile.lastVisit)}`} >
-                <img 
-                  src={this.state.avatarUrl}
-                  alt="profile avatar"
-                  style={{[this.state.property]:"100%"}}
-                />
-            </div>
-        )
-    }
+  render() {
+    const profile = this.props.profile;
+    
+    return (
+      <div className={`avatar ${checkOnline(profile.lastVisit)}`} >
+        <img 
+          src={this.state.avatarUrl}
+          alt="profile avatar"
+          style={{[this.state.property]:"100%"}}
+        />
+      </div>
+    )
+  }
 }
-
-export default Avatar;
