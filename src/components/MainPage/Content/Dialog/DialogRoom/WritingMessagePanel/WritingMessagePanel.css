@@ -15,6 +15,9 @@
     .writingMessagePanel {
         width: 100%;
     }
+    .writingMessagePanel input[type=submit] {
+        height: none;
+    }
 }
 
 .writingMessagePanel textarea {

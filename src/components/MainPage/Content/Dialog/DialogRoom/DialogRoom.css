@@ -10,11 +10,12 @@
 
 .dialogRoom > h4 {
     position: fixed;
-    top: 8vh;
-    margin: 1vh 0;
+    top: 4vh;
     width: 65%;
     background: floralwhite;
     font-size: 3vh;
+    border: solid rgb(111, 38, 148) 0;
+    border-bottom-width: 1px;
 }
 
 @media all and (max-width: 800px) {
@@ -22,7 +23,7 @@
         height: 100%;
     }
     .dialogRoom > h4 {
-        top: 15vh;
+        top: 14vh;
         width: 100%;
     }
 }

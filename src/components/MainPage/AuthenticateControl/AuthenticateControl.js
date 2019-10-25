@@ -13,6 +13,15 @@ export default class AuthenticateControl extends React.Component {
       redirect: false
     };
   }
+
+  componentDidUpdate() {
+    const element = document.querySelector('#authenticateControl');
+    if(element != null)
+      if(this.state.isPanelOn && element.style.height)
+        element.style.height = null;
+      else if(!this.state.isPanelOn && !element.style.height)  
+        element.style.height = "8vh";
+  }
   
   authenticatePanelToggle = () => {
     this.setState({

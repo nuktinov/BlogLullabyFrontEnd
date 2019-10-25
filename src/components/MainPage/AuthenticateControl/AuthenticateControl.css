@@ -17,7 +17,20 @@
 }
 
 
+@media (max-height: 350px) {
+    #authenticateControl {
+        width: 100%;
+    }
 
+    #authenticateControl form > label{
+        width: 42%;
+    }
+
+    #authenticateControl form{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
 
 .authenticateForm {
     border: solid DarkOrchid 1px;

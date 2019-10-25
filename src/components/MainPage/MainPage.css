@@ -64,9 +64,9 @@
     }
 
     #navBar {
-        left: 0; top: 8.5%; right: 0px;
-        min-height: 3.5vh;
-        height: 6.5%;
+        left: 0; top: 8vh; right: 0px;
+        min-height: 25px;
+        height: 6vh;
         width: auto;
         display: flex;
         flex-direction: row;
@@ -75,6 +75,12 @@
     }
 }
 
+
+@media (max-height: 350px /*здесь Ваша мин. ширина*/) {
+    #pageContent {
+        margin-top: 50px;
+    }
+}
 
 body {
     background:#f0ddee
