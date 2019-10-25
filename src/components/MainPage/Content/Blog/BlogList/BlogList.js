@@ -23,6 +23,7 @@ class BlogList extends React.Component {
 
     componentWillUnmount() {
       this.props.clear()
+      window.onscroll = null;
     }
 
     updateCriterion(criterion) {

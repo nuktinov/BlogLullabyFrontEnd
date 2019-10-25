@@ -32,6 +32,7 @@ export class DialogList extends React.Component {
     
     componentWillUnmount() {
       this.props.clearDialogList()
+      window.onscroll = null;
     }
   
     render() {
