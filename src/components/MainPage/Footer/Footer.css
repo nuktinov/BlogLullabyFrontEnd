@@ -6,7 +6,6 @@
     border-top: solid DarkOrchid 1px;
     display: flex;
     flex-direction: column;
-    height: 12vh;
 }
 
 .contact {
@@ -20,7 +19,7 @@
     display: flex;
     min-width: 10px;
     min-height: 10px;
-    padding: 3px;
+    padding: 2px;
     height: 3.5vh;
     width: 3.5vh;
 }
