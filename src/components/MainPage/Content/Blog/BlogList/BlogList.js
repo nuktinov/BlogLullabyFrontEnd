@@ -19,6 +19,7 @@ class BlogList extends React.Component {
             online: false     
         };
         this.props.getUserList(this.state);
+        document.documentElement.scrollTop = 0;
     }
 
     componentWillUnmount() {

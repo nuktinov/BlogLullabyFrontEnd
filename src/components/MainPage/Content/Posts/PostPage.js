@@ -20,8 +20,8 @@ class PostPage extends React.Component {
     this.props.updatePostList(this.state);
   }
 
-  componentDidUpdate() {
-    
+  componentDidMount(){
+    document.documentElement.scrollTop = 0;
   }
 
   componentWillUnmount() { 
