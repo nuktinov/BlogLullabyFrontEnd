@@ -48,7 +48,7 @@ export default class RegistrationForm extends React.Component {
         {this.label("Lastname", "lastName")}
         {this.label("Password", "password", "password")}
         {this.label("Confirm password", "confirmPassword", "password")}
-        <input type="submit" value="Registration" />
+        <input type="submit" value="Sign up" />
       </form>
     );
   }

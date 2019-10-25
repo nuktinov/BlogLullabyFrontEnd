@@ -14,6 +14,12 @@ export default class AuthenticateControl extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const element = document.querySelector('#authenticateControl');
+    if(element != null)
+      element.style.height = "8vh";
+  }
+
   componentDidUpdate() {
     const element = document.querySelector('#authenticateControl');
     if(element != null)

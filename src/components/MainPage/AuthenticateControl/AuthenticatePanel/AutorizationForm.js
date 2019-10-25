@@ -37,7 +37,7 @@ export default class AuthorizationForm extends React.Component {
           value={this.state.password} 
           onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Log in" />
+        <input type="submit" value="Sign in" />
       </form>
     );
   }

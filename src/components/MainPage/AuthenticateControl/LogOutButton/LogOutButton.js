@@ -13,7 +13,7 @@ function LogOutButton ({ logOut, setRedirect }) {
     }
     return(
         <button onClick={handleClick}>
-            Log out
+            Sign out
         </button>
     );
 };
