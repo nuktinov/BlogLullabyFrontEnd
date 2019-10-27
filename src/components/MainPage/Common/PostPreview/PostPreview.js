@@ -9,7 +9,8 @@ class PostPreview extends React.Component {
       super(props);
       this.state = {
           height: "8vh",
-          imageUrl: null
+          imageUrl: null,
+          isLoad: true 
       }
       this._isMounted = false;
     }
@@ -17,10 +18,15 @@ class PostPreview extends React.Component {
     componentDidMount() {
         this._isMounted = true;
         const img = new Image(); 
+        const setErr = () => this._isMounted && 
+            this.setState({ 
+                isLoad: false
+            });
         const setHeight = (height) => this._isMounted && 
             this.setState({ 
                 height, 
-                imageUrl: `url(${this.props.post.mainImageUrl})`
+                imageUrl: `url(${this.props.post.mainImageUrl})`,
+                isLoad: false
             });
         
         const width = document.querySelector('.preview').offsetWidth;
@@ -28,6 +34,10 @@ class PostPreview extends React.Component {
             const height = (this.height * width)/this.width;
             setHeight(`${height - height/100*2.5}px`);
         }
+        img.onerror = function(){
+            setErr();
+        }
+
         img.src = this.props.post.mainImageUrl;
     }
 
@@ -39,7 +49,7 @@ class PostPreview extends React.Component {
     render() {
         const post = this.props.post;
         return post == null ? null : (
-                <div className="postPreview">
+            <div className="postPreview">
                     <UserView 
                         userView={post.author}
                     />
@@ -51,6 +61,8 @@ class PostPreview extends React.Component {
                                 maxHeight: "500px",
                             }}>
                             <div>
+                                {this.state.isLoad &&
+                                    <p className="imgLoading"> loading... </p>}          
                                 {post.title &&
                                     <span>{post.title}</span>
                                 }

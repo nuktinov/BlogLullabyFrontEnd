@@ -71,3 +71,8 @@
 .postPreview a:hover {
     opacity: 1;
 }
+
+
+.imgLoading {
+    font-size: 0.8vh;
+}
