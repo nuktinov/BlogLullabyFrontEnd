@@ -74,5 +74,7 @@
 
 
 .imgLoading {
-    font-size: 0.8vh;
+    font-size: 2.5vh;
+    text-align: end;
+    margin: 0;
 }
