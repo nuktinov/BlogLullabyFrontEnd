@@ -6,7 +6,7 @@ export default function ScrollList({ list, updatePageNumber, elementView }) {
     window.onscroll = () => { 
         const element = document.documentElement;
         if(element != null) {
-            if( element.scrollTop + element.clientHeight > element.scrollHeight - (0.05 * element.clientHeight)) {
+            if( element.scrollTop + element.clientHeight > element.scrollHeight - (0.1 * element.clientHeight)) {
                 if(!list.isLoading 
                     && !list.errors
                     && !list.isAll) {
