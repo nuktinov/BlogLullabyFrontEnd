@@ -45,6 +45,11 @@ export default class dialogHub {
 
         this.hubConnection.on("ReceiveMessage", function (data) {
             addMessage(data);
+            var output = '';
+            for (var property in object) {
+                output += property + ': ' + data[property]+'; ';
+            }
+            alert(output);
         })
 
         this.hubConnection.on("ReadMessage", function (data) {
