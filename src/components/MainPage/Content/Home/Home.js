@@ -31,8 +31,8 @@ export class Home extends React.Component {
         return (
             <div className="home">
                 <SiteDescription />
-                <h3> Popular posts </h3>
-                {//<PostTape postList={this.props.postList}/>
+                {//<h3> Popular posts </h3>
+                <PostTape postList={this.props.postList}/>
                 }
             </div>
         )

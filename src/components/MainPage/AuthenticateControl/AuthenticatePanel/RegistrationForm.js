@@ -23,8 +23,11 @@ export default class RegistrationForm extends React.Component {
   }
 
   handleSubmit = (event) => {
-    this.props.submit(this.state);
-    event.preventDefault();
+	event.preventDefault();
+	if(this.state.password !== this.state.confirmPassword)
+		alert("Password and password confirmation do not match");
+	else
+		this.props.submit(this.state);
   }
 
   label = (viewString, inputName, type = "text") => (
